@@ -48,9 +48,18 @@ enum
 # define NIDS_RESET 4
 # define NIDS_TIMED_OUT 5
 # define NIDS_EXITING   6	/* nids is exiting; last chance to get data */
+#ifdef ENABLE_TCPREASM
+# define NIDS_RESUME 7
+#endif
 
 # define NIDS_DO_CHKSUM  0
 # define NIDS_DONT_CHKSUM 1
+
+#ifdef ENABLE_TCPREASM
+# define NIDS_TCP_RESUME_NONE   0
+# define NIDS_TCP_RESUME_CLIENT 1
+# define NIDS_TCP_RESUME_SERVER 2
+#endif
 
 struct tuple4
 {
@@ -63,6 +72,10 @@ struct tuple4
 struct half_stream
 {
   char state;
+#ifdef ENABLE_TCPREASM
+  char resume_second_half;
+#endif
+  
   char collect;
   char collect_urg;
 
@@ -131,6 +144,9 @@ struct nids_prm
   int queue_limit;
   int tcp_workarounds;
   pcap_t *pcap_desc;
+#ifdef ENABLE_TCPREASM
+  int tcp_resume_wscale;
+#endif
 };
 
 struct tcp_timeout
@@ -148,6 +164,10 @@ void nids_register_ip (void (*));
 void nids_unregister_ip (void (*));
 void nids_register_tcp (void (*));
 void nids_unregister_tcp (void (*x));
+#ifdef ENABLE_TCPREASM
+void nids_register_tcp_resume (void (*));
+void nids_unregister_tcp_resume (void (*x));
+#endif
 void nids_register_udp (void (*));
 void nids_unregister_udp (void (*));
 void nids_killtcp (struct tcp_stream *);

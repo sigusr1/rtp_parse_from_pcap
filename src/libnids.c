@@ -47,6 +47,9 @@ static struct proc_node *ip_procs;
 static struct proc_node *udp_procs;
 
 struct proc_node *tcp_procs;
+#ifdef ENABLE_TCPREASM
+struct proc_node *tcp_resume_procs;
+#endif
 static int linktype;
 static pcap_t *desc = NULL;
 
@@ -109,6 +112,10 @@ struct nids_prm nids_params = {
     20000,			/* queue_limit */
     0,				/* tcp_workarounds */
     NULL			/* pcap_desc */
+#ifdef ENABLE_TCPREASM
+    ,
+    1				/* tcp_resume_wscale */
+#endif
 };
 
 static int nids_ip_filter(struct ip *x, int len)
@@ -470,6 +477,9 @@ static void init_procs()
     ip_procs->item = gen_ip_proc;
     ip_procs->next = 0;
     tcp_procs = 0;
+#ifdef ENABLE_TCPREASM
+    tcp_resume_procs = 0;
+#endif
     udp_procs = 0;
 }
 

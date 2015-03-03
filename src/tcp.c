@@ -49,6 +49,9 @@ enum {
 #define EXP_SEQ (snd->first_data_seq + rcv->count + rcv->urg_count)
 
 extern struct proc_node *tcp_procs;
+#ifdef ENABLE_TCPREASM
+extern struct proc_node *tcp_resume_procs;
+#endif
 
 static struct tcp_stream **tcp_stream_table;
 static struct tcp_stream *streams_pool;
@@ -249,7 +252,103 @@ static int get_wscale(struct tcphdr * this_tcphdr, unsigned int * ws)
   return ret;
 }  		
 
-    
+#ifdef ENABLE_TCPREASM
+static struct tcp_stream *
+initiate_tcp_resume(struct tcphdr * this_tcphdr, struct ip * this_iphdr, int direction)
+{
+	struct tcp_stream *tolink;
+	struct tcp_stream *a_tcp;
+	int hash_index;
+	struct tuple4 addr;
+	struct half_stream *half;
+	struct half_stream *other_half;
+	
+	switch (direction)
+	{
+		case NIDS_TCP_RESUME_CLIENT:
+			addr.source = ntohs(this_tcphdr->th_sport);
+			addr.dest = ntohs(this_tcphdr->th_dport);
+			addr.saddr = this_iphdr->ip_src.s_addr;
+			addr.daddr = this_iphdr->ip_dst.s_addr;
+			break;
+		case NIDS_TCP_RESUME_SERVER:
+			addr.source = ntohs(this_tcphdr->th_dport);
+			addr.dest = ntohs(this_tcphdr->th_sport);
+			addr.saddr = this_iphdr->ip_dst.s_addr;
+			addr.daddr = this_iphdr->ip_src.s_addr;
+			break;
+		default:
+			return NULL;
+	}
+	hash_index = mk_hash_index(addr);
+	
+	if (tcp_num > max_stream) {
+		struct lurker_node *i;
+		
+		tcp_oldest->nids_state = NIDS_TIMED_OUT;
+		for (i = tcp_oldest->listeners; i; i = i->next)
+			(i->item) (tcp_oldest, &i->data);
+		nids_free_tcp_stream(tcp_oldest);
+		nids_params.syslog(NIDS_WARN_TCP, NIDS_WARN_TCP_TOOMUCH, ugly_iphdr, this_tcphdr);
+	}
+	a_tcp = free_streams;
+	if (!a_tcp) {
+		fprintf(stderr, "gdb me ...\n");
+		pause();
+	}
+	free_streams = a_tcp->next_free;
+	
+	tcp_num++;
+	tolink = tcp_stream_table[hash_index];
+	memset(a_tcp, 0, sizeof(struct tcp_stream));
+	a_tcp->hash_index = hash_index;
+	a_tcp->addr = addr;
+	if (direction == NIDS_TCP_RESUME_CLIENT)
+	{
+		half = &a_tcp->client;
+		other_half = &a_tcp->server;
+	}
+	else
+	{
+		half = &a_tcp->server;
+		other_half = &a_tcp->client;
+	}
+	half->state = TCP_ESTABLISHED;
+	half->seq = ntohl(this_tcphdr->th_seq) + 1;
+	half->first_data_seq = half->seq - 1;
+	half->window = ntohs(this_tcphdr->th_win);
+	half->ts_on = 0;
+	half->wscale = nids_params.tcp_resume_wscale;
+	if (this_tcphdr->th_flags & TH_ACK)
+		half->ack_seq = ntohl(this_tcphdr->th_ack);
+	
+#ifdef ENABLE_TCPREASM_DEBUG
+	DEBUG_REASSEMBLY("new connection: seq = %u, ack_seq = %u\n", 
+					 half->seq, half->ack_seq);
+#endif
+	
+	other_half->ack_seq = half->seq;
+	other_half->state = TCP_ESTABLISHED;
+	other_half->resume_second_half = 1;
+	other_half->ts_on = 0;
+	other_half->window = half->window;
+	other_half->wscale = nids_params.tcp_resume_wscale;
+	a_tcp->next_node = tolink;
+	a_tcp->prev_node = 0;
+	if (tolink)
+		tolink->prev_node = a_tcp;
+	tcp_stream_table[hash_index] = a_tcp;
+	a_tcp->next_time = tcp_latest;
+	a_tcp->prev_time = 0;
+	if (!tcp_oldest)
+		tcp_oldest = a_tcp;
+	if (tcp_latest)
+		tcp_latest->prev_time = a_tcp;
+	tcp_latest = a_tcp;
+	
+	return a_tcp;
+}
+#endif
 
 
 static void
@@ -714,6 +813,9 @@ process_tcp(u_char * data, int skblen)
   unsigned int tmp_ts;
   struct tcp_stream *a_tcp;
   struct half_stream *snd, *rcv;
+#ifdef ENABLE_TCPREASM
+  int resumed_tcp = 0;
+#endif
 
   ugly_iphdr = this_iphdr;
   iplen = ntohs(this_iphdr->ip_len);
@@ -745,6 +847,22 @@ process_tcp(u_char * data, int skblen)
 		       this_tcphdr);
     return;
   }
+	
+#ifdef ENABLE_TCPREASM_DEBUG
+  DEBUG_REASSEMBLY("process_tcp starting: packet is %u.%u.%u.%u:%u->%u.%u.%u.%u:%u\n",
+     (ntohl(this_iphdr->ip_src.s_addr) >> 24) & 0xff,
+     (ntohl(this_iphdr->ip_src.s_addr) >> 16) & 0xff,
+     (ntohl(this_iphdr->ip_src.s_addr) >> 8) & 0xff,
+     (ntohl(this_iphdr->ip_src.s_addr)) & 0xff,
+     ntohs(this_tcphdr->th_sport),
+     (ntohl(this_iphdr->ip_dst.s_addr) >> 24) & 0xff,
+     (ntohl(this_iphdr->ip_dst.s_addr) >> 16) & 0xff,
+     (ntohl(this_iphdr->ip_dst.s_addr) >> 8) & 0xff,
+     (ntohl(this_iphdr->ip_dst.s_addr)) & 0xff,
+     ntohs(this_tcphdr->th_dport)    
+  );
+#endif
+	
 #if 0
   check_flags(this_iphdr, this_tcphdr);
 //ECN
@@ -752,10 +870,64 @@ process_tcp(u_char * data, int skblen)
   if (!(a_tcp = find_stream(this_tcphdr, this_iphdr, &from_client))) {
     if ((this_tcphdr->th_flags & TH_SYN) &&
 	!(this_tcphdr->th_flags & TH_ACK) &&
-	!(this_tcphdr->th_flags & TH_RST))
+	!(this_tcphdr->th_flags & TH_RST)) {
       add_new_tcp(this_tcphdr, this_iphdr);
+      return;
+    }
+		
+#ifdef ENABLE_TCPREASM
+#ifdef ENABLE_TCPREASM_DEBUG
+    DEBUG_REASSEMBLY("packet is not in stream context: SYN %u, RST %u, ACK %u\n",
+      this_tcphdr->th_flags & TH_SYN,
+      this_tcphdr->th_flags & TH_RST,
+      this_tcphdr->th_flags & TH_ACK
+    );
+#endif
+		
+    /* does this look like a stream we should try to resume?
+     * the conditions for it are:
+     * - No SYN (that's the whole point)
+     * - No RST or FIN (no point in doing that)
+     * - we have a resume callback to identify direction
+     */
+    if ((this_tcphdr->th_flags & TH_SYN) != 0 ||
+	(this_tcphdr->th_flags & TH_RST) != 0 ||
+	(this_tcphdr->th_flags & TH_FIN) != 0) {
+	    return;
+    }
+    else {
+      struct proc_node *i;
+      for (i = tcp_resume_procs; i; i = i->next) {
+        int resume;
+
+#ifdef ENABLE_TCPREASM_DEBUG
+	DEBUG_REASSEMBLY("trying to resume stream\n");
+#endif
+				
+	i->item(this_tcphdr, this_iphdr, &resume);
+	from_client = (resume == NIDS_TCP_RESUME_CLIENT);
+	a_tcp = initiate_tcp_resume(this_tcphdr, this_iphdr, resume);
+				
+#ifdef ENABLE_TCPREASM_DEBUG
+        DEBUG_REASSEMBLY("a_tcp = %p, from_client = %u, resume = %u\n",
+	   a_tcp, from_client, resume);
+#endif
+				
+	if (a_tcp) {
+	  resumed_tcp = 1;
+	  break;
+	}
+      }
+    }
+
+    if (!resumed_tcp)
+      return;
+  }
+#else
     return;
   }
+#endif
+
   if (from_client) {
     snd = &a_tcp->client;
     rcv = &a_tcp->server;
@@ -764,6 +936,38 @@ process_tcp(u_char * data, int skblen)
     rcv = &a_tcp->client;
     snd = &a_tcp->server;
   }
+		
+#ifdef ENABLE_TCPREASM
+#ifdef ENABLE_TCPREASM_DEBUG
+  DEBUG_REASSEMBLY("processing packet: seq = %u, ack = %u, snd->seq = %u, rcv->ack_seq = %u\n",
+      ntohl(this_tcphdr->th_seq), 
+      ntohl(this_tcphdr->th_ack),
+      snd->seq, rcv->ack_seq);
+#endif
+		
+  /* are we the 2nd half of the resume? */
+  if (snd->resume_second_half) {
+	snd->seq = ntohl(this_tcphdr->th_seq) + 1;
+	snd->first_data_seq = snd->seq - 1;
+	snd->window = ntohs(this_tcphdr->th_win);
+	snd->resume_second_half = 0;
+	snd->ack_seq = rcv->seq;
+			
+#ifdef ENABLE_TCPREASM_DEBUG
+	DEBUG_REASSEMBLY("second half resumed, seq = %u, first = %u, ack = %u\n",
+	 snd->seq, snd->first_data_seq, snd->ack_seq);
+#endif
+			
+  }
+		
+  if (resumed_tcp) {
+	snd->state = TCP_ESTABLISHED;
+	a_tcp->nids_state = NIDS_RESUME;
+	goto do_lurkers;
+  }
+#endif
+		
+  /* normal SYN+ACK processing */
   if ((this_tcphdr->th_flags & TH_SYN)) {
     if (from_client || a_tcp->client.state != TCP_SYN_SENT ||
       a_tcp->server.state != TCP_CLOSE || !(this_tcphdr->th_flags & TH_ACK))
@@ -799,8 +1003,15 @@ process_tcp(u_char * data, int skblen)
   	( !before(ntohl(this_tcphdr->th_seq), rcv->ack_seq + rcv->window*rcv->wscale) ||
           before(ntohl(this_tcphdr->th_seq) + datalen, rcv->ack_seq)  
         )
-     )     
+     ) {
+#ifdef ENABLE_TCPREASM_DEBUG
+ 	DEBUG_REASSEMBLY("packet is ignored: "
+ 	 "datalen=%u, seq=%u, rcv->ack_seq=%u, rcv->window=%u, rcv->wscale=%u\n",
+ 	 datalen, ntohl(this_tcphdr->th_seq),
+ 	 rcv->ack_seq, rcv->window, rcv->wscale);
+#endif
      return;
+     }
 
   if ((this_tcphdr->th_flags & TH_RST)) {
     if (a_tcp->nids_state == NIDS_DATA) {
@@ -832,13 +1043,24 @@ process_tcp(u_char * data, int skblen)
 	  
 	  a_tcp->server.state = TCP_ESTABLISHED;
 	  a_tcp->nids_state = NIDS_JUST_EST;
+#ifdef ENABLE_TCPREASM
+do_lurkers:	  
+#ifdef ENABLE_TCPREASM_DEBUG
+	  DEBUG_REASSEMBLY("notifying lurkers of new stream\n");
+#endif
+#endif
+								
 	  for (i = tcp_procs; i; i = i->next) {
 	    char whatto = 0;
 	    char cc = a_tcp->client.collect;
 	    char sc = a_tcp->server.collect;
 	    char ccu = a_tcp->client.collect_urg;
 	    char scu = a_tcp->server.collect_urg;
-	    
+	   
+#ifdef ENABLE_TCPREASM_DEBUG
+	    DEBUG_REASSEMBLY("  %p, nids_state = %u\n", i, a_tcp->nids_state);
+#endif
+
 	    (i->item) (a_tcp, &data);
 	    if (cc < a_tcp->client.collect)
 	      whatto |= COLLECT_cc;
@@ -868,6 +1090,10 @@ process_tcp(u_char * data, int skblen)
 	    }
 	  }
 	  if (!a_tcp->listeners) {
+#ifdef ENABLE_TCPREASM_DEBUG
+	    DEBUG_REASSEMBLY("no listeners, killing stream\n");
+#endif
+									
 	    nids_free_tcp_stream(a_tcp);
 	    return;
 	  }
@@ -892,9 +1118,16 @@ process_tcp(u_char * data, int skblen)
     }
   }
   if (datalen + (this_tcphdr->th_flags & TH_FIN) > 0)
+     {
+#ifdef ENABLE_TCPREASM_DEBUG
+	DEBUG_REASSEMBLY("calling tcp_queue, datalen = %u, data = %.*s...\n", 
+	 datalen, datalen > 10 ? 10 : datalen, (char *) (this_tcphdr) + 4 * this_tcphdr->th_off);
+#endif
+
     tcp_queue(a_tcp, this_tcphdr, snd, rcv,
 	      (char *) (this_tcphdr) + 4 * this_tcphdr->th_off,
 	      datalen, skblen);
+	}
   snd->window = ntohs(this_tcphdr->th_win);
   if (rcv->rmem_alloc > 65535)
     prune_queue(rcv, this_tcphdr);
@@ -920,6 +1153,20 @@ nids_unregister_tcp(void (*x))
 {
   unregister_callback(&tcp_procs, x);
 }
+
+#ifdef ENABLE_TCPREASM
+void
+nids_register_tcp_resume(void (*x))
+{
+  register_callback(&tcp_resume_procs, x);
+}
+
+void
+nids_unregister_tcp_resume(void (*x))
+{
+  unregister_callback(&tcp_resume_procs, x);
+}
+#endif
 
 int
 tcp_init(int size)
