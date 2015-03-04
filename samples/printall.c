@@ -110,7 +110,8 @@ int
 main ()
 {
   // here we can alter libnids params, for instance:
-  // nids_params.n_hosts=256;
+  nids_params.filename="ok.pcapng";
+  nids_params.syslog_level = 8;
   if (!nids_init ())
   {
   	fprintf(stderr,"%s\n",nids_errbuf);
