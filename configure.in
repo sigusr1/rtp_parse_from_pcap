@@ -105,6 +105,13 @@ AC_ARG_ENABLE(tcpreasm,
 )
 test "${enable_tcpreasm}" = "yes" && CFLAGS="${CFLAGS} -DENABLE_TCPREASM"
 
+AC_ARG_ENABLE(checksum,
+[  --enable-checksum     whether enable ip and tcp checksum],
+,
+[   enable_checksum="no"]
+)
+test "${enable_checksum}" = "yes" && CFLAGS="${CFLAGS} -DENABLE_CHECKSUM"
+
 dnl Checks for libglib2.8
 AC_ARG_ENABLE(libglib,
 [  --disable-libglib	use glib2 for multiprocessing support],

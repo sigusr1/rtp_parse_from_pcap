@@ -673,6 +673,7 @@ ac_user_opts='
 enable_option_checking
 with_libpcap
 enable_tcpreasm
+enable_checksum
 enable_libglib
 enable_libnet
 with_libnet
@@ -1306,6 +1307,7 @@ Optional Features:
   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
   --enable-tcpreasm     enable tcp reassembly support
+  --enable-checksum     whether enable ip and tcp checksum
   --disable-libglib	use glib2 for multiprocessing support
   --disable-libnet	whether to include code requiring libnet
   --enable-shared	enable building shared libraries
@@ -4200,6 +4202,16 @@ fi
 
 test "${enable_tcpreasm}" = "yes" && CFLAGS="${CFLAGS} -DENABLE_TCPREASM"
 
+# Check whether --enable-checksum was given.
+if test "${enable_checksum+set}" = set; then :
+  enableval=$enable_checksum;
+else
+     enable_checksum="no"
+
+fi
+
+test "${enable_checksum}" = "yes" && CFLAGS="${CFLAGS} -DENABLE_CHECKSUM"
+
 # Check whether --enable-libglib was given.
 if test "${enable_libglib+set}" = set; then :
   enableval=$enable_libglib;
@@ -4329,8 +4341,10 @@ pkg_failed=no
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for GLIB" >&5
 $as_echo_n "checking for GLIB... " >&6; }
 
-if test -n "$PKG_CONFIG"; then
-        if test -n "$PKG_CONFIG" && \
+if test -n "$GLIB_CFLAGS"; then
+    pkg_cv_GLIB_CFLAGS="$GLIB_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
     { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.2.0\""; } >&5
   ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.2.0") 2>&5
   ac_status=$?
@@ -4340,11 +4354,13 @@ if test -n "$PKG_CONFIG"; then
 else
   pkg_failed=yes
 fi
-else
-	pkg_failed=untried
+ else
+    pkg_failed=untried
 fi
-if test -n "$PKG_CONFIG"; then
-        if test -n "$PKG_CONFIG" && \
+if test -n "$GLIB_LIBS"; then
+    pkg_cv_GLIB_LIBS="$GLIB_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
     { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.2.0\""; } >&5
   ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.2.0") 2>&5
   ac_status=$?
@@ -4354,22 +4370,38 @@ if test -n "$PKG_CONFIG"; then
 else
   pkg_failed=yes
 fi
-else
-	pkg_failed=untried
+ else
+    pkg_failed=untried
 fi
 
-if test $pkg_failed = yes; then
-	GLIB_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "glib-2.0 >= 2.2.0"`
-	# Put the nasty error message in config.log where it belongs
-	echo "$GLIB_PKG_ERRORS" 1>&5
 
-	as_fn_error "Package requirements (glib-2.0 >= 2.2.0) were not met.
+
+if test $pkg_failed = yes; then
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+	        GLIB_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "glib-2.0 >= 2.2.0" 2>&1`
+        else
+	        GLIB_PKG_ERRORS=`$PKG_CONFIG --print-errors "glib-2.0 >= 2.2.0" 2>&1`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$GLIB_PKG_ERRORS" >&5
+
+	as_fn_error "Package requirements (glib-2.0 >= 2.2.0) were not met:
+
+$GLIB_PKG_ERRORS
+
 Consider adjusting the PKG_CONFIG_PATH environment variable if you
 installed software in a non-standard prefix.
 
-Alternatively you may set the GLIB_CFLAGS and GLIB_LIBS environment variables
-to avoid the need to call pkg-config.  See the pkg-config man page for
-more details." "$LINENO" 5
+Alternatively, you may set the environment variables GLIB_CFLAGS
+and GLIB_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" "$LINENO" 5
 elif test $pkg_failed = untried; then
 	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
@@ -4377,11 +4409,11 @@ as_fn_error "The pkg-config script could not be found or is too old.  Make sure 
 is in your PATH or set the PKG_CONFIG environment variable to the full
 path to pkg-config.
 
-Alternatively you may set the GLIB_CFLAGS and GLIB_LIBS environment variables
-to avoid the need to call pkg-config.  See the pkg-config man page for
-more details.
+Alternatively, you may set the environment variables GLIB_CFLAGS
+and GLIB_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
 
-To get pkg-config, see <http://www.freedesktop.org/software/pkgconfig>.
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
 See \`config.log' for more details." "$LINENO" 5; }
 else
 	GLIB_CFLAGS=$pkg_cv_GLIB_CFLAGS
@@ -4394,8 +4426,10 @@ pkg_failed=no
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for GTHREAD" >&5
 $as_echo_n "checking for GTHREAD... " >&6; }
 
-if test -n "$PKG_CONFIG"; then
-        if test -n "$PKG_CONFIG" && \
+if test -n "$GTHREAD_CFLAGS"; then
+    pkg_cv_GTHREAD_CFLAGS="$GTHREAD_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
     { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gthread-2.0 >= 2.2.0\""; } >&5
   ($PKG_CONFIG --exists --print-errors "gthread-2.0 >= 2.2.0") 2>&5
   ac_status=$?
@@ -4405,11 +4439,13 @@ if test -n "$PKG_CONFIG"; then
 else
   pkg_failed=yes
 fi
-else
-	pkg_failed=untried
+ else
+    pkg_failed=untried
 fi
-if test -n "$PKG_CONFIG"; then
-        if test -n "$PKG_CONFIG" && \
+if test -n "$GTHREAD_LIBS"; then
+    pkg_cv_GTHREAD_LIBS="$GTHREAD_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
     { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"gthread-2.0 >= 2.2.0\""; } >&5
   ($PKG_CONFIG --exists --print-errors "gthread-2.0 >= 2.2.0") 2>&5
   ac_status=$?
@@ -4419,22 +4455,38 @@ if test -n "$PKG_CONFIG"; then
 else
   pkg_failed=yes
 fi
-else
-	pkg_failed=untried
+ else
+    pkg_failed=untried
 fi
 
-if test $pkg_failed = yes; then
-	GTHREAD_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "gthread-2.0 >= 2.2.0"`
-	# Put the nasty error message in config.log where it belongs
-	echo "$GTHREAD_PKG_ERRORS" 1>&5
 
-	as_fn_error "Package requirements (gthread-2.0 >= 2.2.0) were not met.
+
+if test $pkg_failed = yes; then
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+	        GTHREAD_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "gthread-2.0 >= 2.2.0" 2>&1`
+        else
+	        GTHREAD_PKG_ERRORS=`$PKG_CONFIG --print-errors "gthread-2.0 >= 2.2.0" 2>&1`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$GTHREAD_PKG_ERRORS" >&5
+
+	as_fn_error "Package requirements (gthread-2.0 >= 2.2.0) were not met:
+
+$GTHREAD_PKG_ERRORS
+
 Consider adjusting the PKG_CONFIG_PATH environment variable if you
 installed software in a non-standard prefix.
 
-Alternatively you may set the GTHREAD_CFLAGS and GTHREAD_LIBS environment variables
-to avoid the need to call pkg-config.  See the pkg-config man page for
-more details." "$LINENO" 5
+Alternatively, you may set the environment variables GTHREAD_CFLAGS
+and GTHREAD_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+" "$LINENO" 5
 elif test $pkg_failed = untried; then
 	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
@@ -4442,11 +4494,11 @@ as_fn_error "The pkg-config script could not be found or is too old.  Make sure 
 is in your PATH or set the PKG_CONFIG environment variable to the full
 path to pkg-config.
 
-Alternatively you may set the GTHREAD_CFLAGS and GTHREAD_LIBS environment variables
-to avoid the need to call pkg-config.  See the pkg-config man page for
-more details.
+Alternatively, you may set the environment variables GTHREAD_CFLAGS
+and GTHREAD_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
 
-To get pkg-config, see <http://www.freedesktop.org/software/pkgconfig>.
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.
 See \`config.log' for more details." "$LINENO" 5; }
 else
 	GTHREAD_CFLAGS=$pkg_cv_GTHREAD_CFLAGS

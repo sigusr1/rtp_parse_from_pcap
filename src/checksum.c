@@ -122,6 +122,10 @@ csum_partial(const u_char * buff, int len, u_int sum)
 */
 inline u_short ip_fast_csum(u_char * iph, u_int ihl)
 {
+#ifndef ENABLE_CHECKSUM
+	return 0;
+#endif
+
   u_int sum;
   if (dontchksum(((struct ip*)iph)->ip_src.s_addr))
 	return 0;
@@ -200,6 +204,9 @@ ip_compute_csum(u_char * buff, int len)
 inline u_short
 my_tcp_check(struct tcphdr *th, int len, u_int saddr, u_int daddr)
 {
+#ifndef ENABLE_CHECKSUM
+	return 0;
+#endif
   if (dontchksum(saddr))
   	return 0;
   return csum_tcpudp_magic(saddr, daddr, len, IPPROTO_TCP,

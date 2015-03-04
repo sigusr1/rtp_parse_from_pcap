@@ -7,7 +7,7 @@ srcdir		= .
 
 
 CC		= gcc
-CFLAGS		= -g -O2 -D_BSD_SOURCE -DENABLE_TCPREASM
+CFLAGS		= -g -O2 -D_BSD_SOURCE -DENABLE_TCPREASM -DENABLE_CHECKSUM
 LDFLAGS		= 
 
 PCAP_CFLAGS	= -I/home/huo_jianying/nfs1/network/libpcap-master -I/home/huo_jianying/nfs1/network/libpcap-master/bpf
