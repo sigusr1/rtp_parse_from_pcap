@@ -16,7 +16,7 @@ LIBSTATIC      = libnids.a
 LIBSHARED      = libnids.so.1.24
 
 CC		= gcc
-CFLAGS		= -g -O2 -D_BSD_SOURCE -DENABLE_TCPREASM -DENABLE_CHECKSUM -DLIBNET_VER=-1 -DHAVE_ICMPHDR=1 -DHAVE_TCP_STATES=1 -DHAVE_BSD_UDPHDR=1
+CFLAGS		= -g -O2 -D_BSD_SOURCE -DENABLE_TCPREASM -DLIBNET_VER=-1 -DHAVE_ICMPHDR=1 -DHAVE_TCP_STATES=1 -DHAVE_BSD_UDPHDR=1
 LDFLAGS		= 
 
 PCAP_CFLAGS	= -I/home/huo_jianying/nfs1/network/libpcap-master -I/home/huo_jianying/nfs1/network/libpcap-master/bpf

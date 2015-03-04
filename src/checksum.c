@@ -265,6 +265,10 @@ ip_check_ext(register u_short *addr, register int len, int addon)
 u_short
 ip_fast_csum(u_short *addr, int len)
 {
+#ifndef ENABLE_CHECKSUM
+	return 0;
+#endif
+
   if (dontchksum(((struct ip*)addr)->ip_src.s_addr))
 	return 0;
   return ip_check_ext(addr, len << 2, 0);
@@ -279,6 +283,10 @@ ip_compute_csum(u_short *addr, int len)
 u_short
 my_tcp_check(struct tcphdr *th, int len, u_int saddr, u_int daddr)
 {
+#ifndef ENABLE_CHECKSUM
+	return 0;
+#endif
+
   unsigned int i;
   int sum = 0;
   struct psuedo_hdr hdr;
