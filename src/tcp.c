@@ -47,6 +47,7 @@ enum {
 #define COLLECT_scu 8
 
 #define EXP_SEQ (snd->first_data_seq + rcv->count + rcv->urg_count)
+#define MY_EXP_SEQ (rcv->first_data_seq + snd->count + snd->urg_count)
 
 extern struct proc_node *tcp_procs;
 #ifdef ENABLE_TCPREASM
@@ -711,14 +712,47 @@ prune_queue(struct half_stream * rcv, struct tcphdr * this_tcphdr)
 }
 
 static void
-handle_ack(struct half_stream * snd, u_int acknum)
+handle_ack(struct tcp_stream * a_tcp, struct half_stream * snd, struct half_stream * rcv, u_int acknum)
 {
   int ackdiff;
+  int gap;
+  struct skbuff *pakiet, *tmp;
 
   ackdiff = acknum - snd->ack_seq;
   if (ackdiff > 0) {
     snd->ack_seq = acknum;
   }
+
+  ackdiff = acknum - MY_EXP_SEQ;
+  if (ackdiff <= 0){
+  	return;
+  }
+
+  //rcv->first_data_seq += ackdiff;
+  
+	pakiet = snd->list;
+	while (pakiet) {
+  if (after(pakiet->seq, acknum) && after(pakiet->seq, MY_EXP_SEQ) )
+	break;
+  gap = pakiet->seq - MY_EXP_SEQ;
+  rcv->first_data_seq += gap;
+	add_from_skb(a_tcp, snd, rcv, pakiet->data,
+			 pakiet->len, pakiet->seq, pakiet->fin, pakiet->urg,
+			 pakiet->urg_ptr + pakiet->seq - 1);
+  snd->rmem_alloc -= pakiet->truesize;
+  if (pakiet->prev)
+	pakiet->prev->next = pakiet->next;
+  else
+	snd->list = pakiet->next;
+  if (pakiet->next)
+	pakiet->next->prev = pakiet->prev;
+  else
+	snd->listtail = pakiet->prev;
+  tmp = pakiet->next;
+  free(pakiet->data);
+  free(pakiet);
+  pakiet = tmp;
+	}
 }
 #if 0
 static void
@@ -1000,7 +1034,7 @@ process_tcp(u_char * data, int skblen)
   if (
   	! (  !datalen && ntohl(this_tcphdr->th_seq) == rcv->ack_seq  )
   	&&
-  	( !before(ntohl(this_tcphdr->th_seq), rcv->ack_seq + rcv->window*rcv->wscale) ||
+  	( 
           before(ntohl(this_tcphdr->th_seq) + datalen, rcv->ack_seq)  
         )
      ) {
@@ -1028,7 +1062,7 @@ process_tcp(u_char * data, int skblen)
   /* PAWS check */
   if (rcv->ts_on && get_ts(this_tcphdr, &tmp_ts) && 
   	before(tmp_ts, snd->curr_ts))
-  return; 	
+  return;
   
   if ((this_tcphdr->th_flags & TH_ACK)) {
     if (from_client && a_tcp->client.state == TCP_SYN_SENT &&
@@ -1104,7 +1138,7 @@ do_lurkers:
     }
   }
   if ((this_tcphdr->th_flags & TH_ACK)) {
-    handle_ack(snd, ntohl(this_tcphdr->th_ack));
+    handle_ack(a_tcp, snd, rcv, ntohl(this_tcphdr->th_ack));
     if (rcv->state == FIN_SENT)
       rcv->state = FIN_CONFIRMED;
     if (rcv->state == FIN_CONFIRMED && snd->state == FIN_CONFIRMED) {
@@ -1129,7 +1163,7 @@ do_lurkers:
 	      datalen, skblen);
 	}
   snd->window = ntohs(this_tcphdr->th_win);
-  if (rcv->rmem_alloc > 65535)
+  if (rcv->rmem_alloc > 65535 * 4)
     prune_queue(rcv, this_tcphdr);
   if (!a_tcp->listeners)
     nids_free_tcp_stream(a_tcp);

@@ -15,6 +15,7 @@ See the file COPYING for license details.
 
 #define int_ntoa(x)	inet_ntoa(*((struct in_addr *)&x))
 
+FILE *fp;
 // struct tuple4 contains addresses and port numbers of the TCP connections
 // the following auxiliary function produces a string looking like
 // 10.0.0.1,1024,10.0.0.2,23
@@ -29,12 +30,17 @@ adres (struct tuple4 addr)
   return buf;
 }
 
+void tcp_resume( struct tcphdr *this_tcphdr, struct ip *this_iphdr, int *resume)
+{
+	*resume =  NIDS_TCP_RESUME_CLIENT;
+
+}
 void
 tcp_callback (struct tcp_stream *a_tcp, void ** this_time_not_needed)
 {
   char buf[1024];
   strcpy (buf, adres (a_tcp->addr)); // we put conn params into buf
-  if (a_tcp->nids_state == NIDS_JUST_EST)
+  if (a_tcp->nids_state == NIDS_JUST_EST || a_tcp->nids_state == NIDS_RESUME)
     {
     // connection described by a_tcp is established
     // here we decide, if we wish to follow this stream
@@ -49,7 +55,7 @@ tcp_callback (struct tcp_stream *a_tcp, void ** this_time_not_needed)
                                    // we won't be notified of urgent data
                                    // arrival
 #endif
-      fprintf (stderr, "%s established\n", buf);
+      //fprintf (stderr, "%s established\n", buf);
       return;
     }
   if (a_tcp->nids_state == NIDS_CLOSE)
@@ -96,11 +102,11 @@ tcp_callback (struct tcp_stream *a_tcp, void ** this_time_not_needed)
 	  hlf = &a_tcp->server; // analogical
 	  strcat (buf, "(->)");
 	}
-    fprintf(stderr,"%s",buf); // we print the connection parameters
+    fprintf(stderr,"%s\n",buf); // we print the connection parameters
                               // (saddr, daddr, sport, dport) accompanied
+	if ( a_tcp->addr.dest == 2206 || a_tcp->addr.source== 2206 )
+  		fwrite(hlf->data,hlf->count_new, 1, fp); // we print the newly arrived data
                               // by data flow direction (-> or <-)
-
-   write(2,hlf->data,hlf->count_new); // we print the newly arrived data
       
     }
   return ;
@@ -110,15 +116,18 @@ int
 main ()
 {
   // here we can alter libnids params, for instance:
-  nids_params.filename="ok.pcapng";
+  nids_params.filename="hello.pcap";
   nids_params.syslog_level = 8;
+  fp = fopen("tmp", "wb+");
   if (!nids_init ())
   {
   	fprintf(stderr,"%s\n",nids_errbuf);
   	exit(1);
   }
   nids_register_tcp (tcp_callback);
+  nids_register_tcp_resume(tcp_resume);
   nids_run ();
+  fclose(fp);
   return 0;
 }
 

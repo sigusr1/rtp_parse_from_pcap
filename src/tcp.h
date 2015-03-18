@@ -6,6 +6,7 @@
 #define _NIDS_TCP_H
 #include <sys/time.h>
 
+#define DEBUG_REASSEMBLY printf
 struct skbuff {
   struct skbuff *next;
   struct skbuff *prev;
