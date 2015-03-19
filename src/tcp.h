@@ -15,16 +15,17 @@ struct skbuff {
   u_int len;
   u_int truesize;
   u_int urg_ptr;
+  u_int seq;
+  u_int ack;
+  struct timeval capture_time;
   
   char fin;
   char urg;
-  u_int seq;
-  u_int ack;
 };
 
 int tcp_init(int);
 void tcp_exit(void);
-void process_tcp(u_char *, int);
+void process_tcp(u_char *, int, struct timeval *capture_time);
 void process_icmp(u_char *);
 void tcp_check_timeouts(struct timeval *);
 

@@ -199,11 +199,11 @@ static void nids_syslog(int type, int errnum, struct ip *iph, void *data)
 /* called either directly from pcap_hand() or from cap_queue_process_thread()
  * depending on the value of nids_params.multiproc - mcree
  */
-static void call_ip_frag_procs(void *data,bpf_u_int32 caplen)
+static void call_ip_frag_procs(void *data,bpf_u_int32 caplen, struct timeval *capture_time)
 {
     struct proc_node *i;
     for (i = ip_frag_procs; i; i = i->next)
-	(i->item) (data, caplen);
+	(i->item) (data, caplen, capture_time);
 }
 
 
@@ -359,14 +359,14 @@ void nids_pcap_handler(u_char * par, struct pcap_pkthdr *hdr, u_char * data)
           g_async_queue_unlock(cap_queue);
 	}
      } else { /* user requested simple passthru - no threading */
-        call_ip_frag_procs(data_aligned,hdr->caplen - nids_linkoffset);
+        call_ip_frag_procs(data_aligned,hdr->caplen - nids_linkoffset, &hdr->ts);
      }
  #else
-     call_ip_frag_procs(data_aligned,hdr->caplen - nids_linkoffset);
+     call_ip_frag_procs(data_aligned,hdr->caplen - nids_linkoffset, &hdr->ts);
  #endif
 }
 
-static void gen_ip_frag_proc(u_char * data, int len)
+static void gen_ip_frag_proc(u_char * data, int len, struct timeval *capture_time)
 {
     struct proc_node *i;
     struct ip *iph = (struct ip *) data;
@@ -407,7 +407,7 @@ static void gen_ip_frag_proc(u_char * data, int len)
     skblen += nids_params.sk_buff_size;
 
     for (i = ip_procs; i; i = i->next)
-	(i->item) (iph, skblen);
+	(i->item) (iph, skblen, capture_time);
     if (need_free)
 	free(iph);
 }
@@ -451,11 +451,11 @@ static void process_udp(char *data)
 	ipp = ipp->next;
     }
 }
-static void gen_ip_proc(u_char * data, int skblen)
+static void gen_ip_proc(u_char * data, int skblen, struct timeval *capture_time)
 {
     switch (((struct ip *) data)->ip_p) {
     case IPPROTO_TCP:
-	process_tcp(data, skblen);
+	process_tcp(data, skblen, capture_time);
 	break;
     case IPPROTO_UDP:
 	process_udp((char *)data);

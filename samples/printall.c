@@ -30,13 +30,14 @@ adres (struct tuple4 addr)
   return buf;
 }
 
-void tcp_resume( struct tcphdr *this_tcphdr, struct ip *this_iphdr, int *resume)
+void 
+tcp_resume( struct tcphdr *this_tcphdr, struct ip *this_iphdr, int *resume)
 {
 	*resume =  NIDS_TCP_RESUME_CLIENT;
 
 }
 void
-tcp_callback (struct tcp_stream *a_tcp, void ** this_time_not_needed)
+tcp_callback (struct tcp_stream *a_tcp, void ** this_time_not_needed, struct timeval *capture_time)
 {
   char buf[1024];
   strcpy (buf, adres (a_tcp->addr)); // we put conn params into buf
@@ -104,10 +105,10 @@ tcp_callback (struct tcp_stream *a_tcp, void ** this_time_not_needed)
 	}
     fprintf(stderr,"%s\n",buf); // we print the connection parameters
                               // (saddr, daddr, sport, dport) accompanied
-	if ( a_tcp->addr.dest == 2206 || a_tcp->addr.source== 2206 )
+	if ( a_tcp->addr.dest == 2049 || a_tcp->addr.source== 2049 )
   		fwrite(hlf->data,hlf->count_new, 1, fp); // we print the newly arrived data
                               // by data flow direction (-> or <-)
-      
+      //fprintf(fp, "sec:%8u\tmillisec:%8u\n", capture_time->tv_sec, capture_time->tv_usec);
     }
   return ;
 }

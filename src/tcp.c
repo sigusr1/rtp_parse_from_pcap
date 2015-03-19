@@ -183,7 +183,7 @@ tcp_check_timeouts(struct timeval *now)
       return;
     to->a_tcp->nids_state = NIDS_TIMED_OUT;
     for (i = to->a_tcp->listeners; i; i = i->next)
-      (i->item) (to->a_tcp, &i->data);
+      (i->item) (to->a_tcp, &i->data, NULL);
     next = to->next;
     nids_free_tcp_stream(to->a_tcp);
   }
@@ -288,7 +288,7 @@ initiate_tcp_resume(struct tcphdr * this_tcphdr, struct ip * this_iphdr, int dir
 		
 		tcp_oldest->nids_state = NIDS_TIMED_OUT;
 		for (i = tcp_oldest->listeners; i; i = i->next)
-			(i->item) (tcp_oldest, &i->data);
+			(i->item) (tcp_oldest, &i->data, NULL);
 		nids_free_tcp_stream(tcp_oldest);
 		nids_params.syslog(NIDS_WARN_TCP, NIDS_WARN_TCP_TOOMUCH, ugly_iphdr, this_tcphdr);
 	}
@@ -371,7 +371,7 @@ add_new_tcp(struct tcphdr * this_tcphdr, struct ip * this_iphdr)
     int orig_client_state=tcp_oldest->client.state;
     tcp_oldest->nids_state = NIDS_TIMED_OUT;
     for (i = tcp_oldest->listeners; i; i = i->next)
-      (i->item) (tcp_oldest, &i->data);
+      (i->item) (tcp_oldest, &i->data, NULL);
     nids_free_tcp_stream(tcp_oldest);
     if (orig_client_state!=TCP_SYN_SENT)
       nids_params.syslog(NIDS_WARN_TCP, NIDS_WARN_TCP_TOOMUCH, ugly_iphdr, this_tcphdr);
@@ -440,7 +440,7 @@ add2buf(struct half_stream * rcv, char *data, int datalen)
 }
 
 static void
-ride_lurkers(struct tcp_stream * a_tcp, char mask)
+ride_lurkers(struct tcp_stream * a_tcp, char mask, struct timeval *capture_time)
 {
   struct lurker_node *i;
   char cc, sc, ccu, scu;
@@ -452,7 +452,7 @@ ride_lurkers(struct tcp_stream * a_tcp, char mask)
       ccu = a_tcp->client.collect_urg;
       scu = a_tcp->server.collect_urg;
 
-      (i->item) (a_tcp, &i->data);
+      (i->item) (a_tcp, &i->data, capture_time);
       if (cc < a_tcp->client.collect)
 	i->whatto |= COLLECT_cc;
       if (ccu < a_tcp->client.collect_urg)
@@ -473,7 +473,7 @@ ride_lurkers(struct tcp_stream * a_tcp, char mask)
 }
 
 static void
-notify(struct tcp_stream * a_tcp, struct half_stream * rcv)
+notify(struct tcp_stream * a_tcp, struct half_stream * rcv, struct timeval *capture_time)
 {
   struct lurker_node *i, **prev_addr;
   char mask;
@@ -485,7 +485,7 @@ notify(struct tcp_stream * a_tcp, struct half_stream * rcv)
       mask = COLLECT_ccu;
     else
       mask = COLLECT_scu;
-    ride_lurkers(a_tcp, mask);
+    ride_lurkers(a_tcp, mask, capture_time);
     goto prune_listeners;
   }
   if (rcv->collect) {
@@ -498,7 +498,7 @@ notify(struct tcp_stream * a_tcp, struct half_stream * rcv)
 		a_tcp->read = rcv->count - rcv->offset;
 		  total=a_tcp->read;
   
-	    ride_lurkers(a_tcp, mask);
+	    ride_lurkers(a_tcp, mask, capture_time);
 	    if (a_tcp->read>total-rcv->count_new)
 	    	rcv->count_new=total-a_tcp->read;
 	    
@@ -529,7 +529,8 @@ static void
 add_from_skb(struct tcp_stream * a_tcp, struct half_stream * rcv,
 	     struct half_stream * snd,
 	     u_char *data, int datalen,
-	     u_int this_seq, char fin, char urg, u_int urg_ptr)
+	     u_int this_seq, char fin, char urg, u_int urg_ptr,
+	     struct timeval *capture_time)
 {
   u_int lost = EXP_SEQ - this_seq;
   int to_copy, to_copy2;
@@ -545,7 +546,7 @@ add_from_skb(struct tcp_stream * a_tcp, struct half_stream * rcv,
     if (to_copy > 0) {
       if (rcv->collect) {
 	add2buf(rcv, (char *)(data + lost), to_copy);
-	notify(a_tcp, rcv);
+	notify(a_tcp, rcv, capture_time);
       }
       else {
 	rcv->count += to_copy;
@@ -554,7 +555,7 @@ add_from_skb(struct tcp_stream * a_tcp, struct half_stream * rcv,
     }
     rcv->urgdata = data[rcv->urg_ptr - this_seq];
     rcv->count_new_urg = 1;
-    notify(a_tcp, rcv);
+    notify(a_tcp, rcv, capture_time);
     rcv->count_new_urg = 0;
     rcv->urg_seen = 0;
     rcv->urg_count++;
@@ -562,7 +563,7 @@ add_from_skb(struct tcp_stream * a_tcp, struct half_stream * rcv,
     if (to_copy2 > 0) {
       if (rcv->collect) {
 	add2buf(rcv, (char *)(data + lost + to_copy + 1), to_copy2);
-	notify(a_tcp, rcv);
+	notify(a_tcp, rcv, capture_time);
       }
       else {
 	rcv->count += to_copy2;
@@ -574,7 +575,7 @@ add_from_skb(struct tcp_stream * a_tcp, struct half_stream * rcv,
     if (datalen - lost > 0) {
       if (rcv->collect) {
 	add2buf(rcv, (char *)(data + lost), datalen - lost);
-	notify(a_tcp, rcv);
+	notify(a_tcp, rcv, capture_time);
       }
       else {
 	rcv->count += datalen - lost;
@@ -592,7 +593,7 @@ add_from_skb(struct tcp_stream * a_tcp, struct half_stream * rcv,
 static void
 tcp_queue(struct tcp_stream * a_tcp, struct tcphdr * this_tcphdr,
 	  struct half_stream * snd, struct half_stream * rcv,
-	  char *data, int datalen, int skblen
+	  char *data, int datalen, int skblen,struct timeval *capture_time
 	  )
 {
   u_int this_seq = ntohl(this_tcphdr->th_seq);
@@ -609,7 +610,7 @@ tcp_queue(struct tcp_stream * a_tcp, struct tcphdr * this_tcphdr,
       add_from_skb(a_tcp, rcv, snd, (u_char *)data, datalen, this_seq,
 		   (this_tcphdr->th_flags & TH_FIN),
 		   (this_tcphdr->th_flags & TH_URG),
-		   ntohs(this_tcphdr->th_urp) + this_seq - 1);
+		   ntohs(this_tcphdr->th_urp) + this_seq - 1, capture_time);
       /*
        * Do we have any old packets to ack that the above
        * made visible? (Go forward from skb)
@@ -621,7 +622,7 @@ tcp_queue(struct tcp_stream * a_tcp, struct tcphdr * this_tcphdr,
 	if (after(pakiet->seq + pakiet->len + pakiet->fin, EXP_SEQ)) {
 	  add_from_skb(a_tcp, rcv, snd, pakiet->data,
 		       pakiet->len, pakiet->seq, pakiet->fin, pakiet->urg,
-		       pakiet->urg_ptr + pakiet->seq - 1);
+		       pakiet->urg_ptr + pakiet->seq - 1, &pakiet->capture_time);
         }
 	rcv->rmem_alloc -= pakiet->truesize;
 	if (pakiet->prev)
@@ -646,6 +647,7 @@ tcp_queue(struct tcp_stream * a_tcp, struct tcphdr * this_tcphdr,
 
     pakiet = mknew(struct skbuff);
     pakiet->truesize = skblen;
+	pakiet->capture_time = *capture_time;
     rcv->rmem_alloc += pakiet->truesize;
     pakiet->len = datalen;
     pakiet->data = malloc(datalen);
@@ -738,7 +740,8 @@ handle_ack(struct tcp_stream * a_tcp, struct half_stream * snd, struct half_stre
   rcv->first_data_seq += gap;
 	add_from_skb(a_tcp, snd, rcv, pakiet->data,
 			 pakiet->len, pakiet->seq, pakiet->fin, pakiet->urg,
-			 pakiet->urg_ptr + pakiet->seq - 1);
+			 pakiet->urg_ptr + pakiet->seq - 1,
+			 &pakiet->capture_time);
   snd->rmem_alloc -= pakiet->truesize;
   if (pakiet->prev)
 	pakiet->prev->next = pakiet->next;
@@ -822,7 +825,7 @@ void tcp_exit(void)
       a_tcp = a_tcp->next_node;
       for (j = t_tcp->listeners; j; j = j->next) {
           t_tcp->nids_state = NIDS_EXITING;
-	  (j->item)(t_tcp, &j->data);
+	  (j->item)(t_tcp, &j->data, NULL);
       }
       nids_free_tcp_stream(t_tcp);
     }
@@ -838,7 +841,7 @@ void tcp_exit(void)
 }
 
 void
-process_tcp(u_char * data, int skblen)
+process_tcp(u_char * data, int skblen, struct timeval *capture_time)
 {
   struct ip *this_iphdr = (struct ip *)data;
   struct tcphdr *this_tcphdr = (struct tcphdr *)(data + 4 * this_iphdr->ip_hl);
@@ -1053,7 +1056,7 @@ process_tcp(u_char * data, int skblen)
 
       a_tcp->nids_state = NIDS_RESET;
       for (i = a_tcp->listeners; i; i = i->next)
-	(i->item) (a_tcp, &i->data);
+	(i->item) (a_tcp, &i->data, NULL);
     }
     nids_free_tcp_stream(a_tcp);
     return;
@@ -1095,7 +1098,7 @@ do_lurkers:
 	    DEBUG_REASSEMBLY("  %p, nids_state = %u\n", i, a_tcp->nids_state);
 #endif
 
-	    (i->item) (a_tcp, &data);
+	    (i->item) (a_tcp, &data, NULL);
 	    if (cc < a_tcp->client.collect)
 	      whatto |= COLLECT_cc;
 	    if (ccu < a_tcp->client.collect_urg)
@@ -1146,7 +1149,7 @@ do_lurkers:
 
       a_tcp->nids_state = NIDS_CLOSE;
       for (i = a_tcp->listeners; i; i = i->next)
-	(i->item) (a_tcp, &i->data);
+	(i->item) (a_tcp, &i->data, NULL);
       nids_free_tcp_stream(a_tcp);
       return;
     }
@@ -1160,7 +1163,7 @@ do_lurkers:
 
     tcp_queue(a_tcp, this_tcphdr, snd, rcv,
 	      (char *) (this_tcphdr) + 4 * this_tcphdr->th_off,
-	      datalen, skblen);
+	      datalen, skblen, capture_time);
 	}
   snd->window = ntohs(this_tcphdr->th_win);
   if (rcv->rmem_alloc > 65535 * 4)
@@ -1311,6 +1314,6 @@ process_icmp(u_char * data)
     return;
   a_tcp->nids_state = NIDS_RESET;
   for (i = a_tcp->listeners; i; i = i->next)
-    (i->item) (a_tcp, &i->data);
+    (i->item) (a_tcp, &i->data, NULL);
   nids_free_tcp_stream(a_tcp);
 }
