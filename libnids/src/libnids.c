@@ -260,7 +260,10 @@ void nids_pcap_handler(u_char * par, struct pcap_pkthdr *hdr, u_char * data)
 	} else if (data[12] == 0x81 && data[13] == 0) {
 	    /* Skip 802.1Q VLAN and priority information */
 	    nids_linkoffset = 18;
-	} else
+	} else if (data[12] == 0x88 && data[13] == 0x64) {
+	    /* Skip PPPoE information, only consider pppoe session, discard pppoe discovery */
+	    nids_linkoffset = 22;
+	}  else
 	    /* non-ip frame */
 	    return;
 	break;
