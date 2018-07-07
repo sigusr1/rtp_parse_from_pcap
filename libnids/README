@@ -2,6 +2,16 @@
                              ====================
                                  libnids-1.24
                              ====================
+			     
+Notes: The following changes has been made to version 1.24.
+
+    a. support incomplete tcp stream.
+    b. Support rfc2516 , PPPoE
+    c. modify some sample code for test
+    d. some other changes. 
+
+To view all the changes I made, please explore the git logs commited by me.  
+To view the original code, please refer to http://libnids.sourceforge.net/			     
 
 1. What is libnids ?
 ------------------------
