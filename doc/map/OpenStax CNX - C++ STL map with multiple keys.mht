@@ -1,0 +1,348 @@
+From: =?gb2312?B?0tHTySBJbnRlcm5ldCBFeHBsb3JlciAxMSCxo7Tm?=
+Subject: OpenStax CNX
+Date: Wed, 4 Feb 2015 23:36:16 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01D040D3.5EA43000"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7601.17609
+
+这是 MIME 格式的多方邮件。
+
+------=_NextPart_000_0000_01D040D3.5EA43000
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://cnx.org/contents/6c0ab102-e6e8-4870-a6ea-34447b260fdd@2/C++_STL_map_with_multiple_keys
+
+=EF=BB=BF<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "" ""><HTML><HEAD><META content=3D"IE=3D11.0000"=20
+http-equiv=3D"X-UA-Compatible">
+<TITLE>OpenStax CNX</TITLE>
+<META charset=3D"utf-8">
+<META name=3D"fragment" content=3D"!">
+<META name=3D"viewport" =
+content=3D"width=3Ddevice-width,initial-scale=3D1"><LINK =
+href=3D"/images/cnx-64x64.png"=20
+rel=3D"icon" type=3D"image/png"><LINK title=3D"OpenStax CNX" =
+href=3D"/opensearch.xml"=20
+rel=3D"search" =
+type=3D"application/opensearchdescription+xml"><NOSCRIPT>&lt;link=20
+rel=3D"stylesheet" type=3D"text/css" href=3D"/styles/noscript.css" =
+/&gt;</NOSCRIPT>
+<SCRIPT src=3D"http://cnx.org/scripts/require.js" async=3D"" =
+data-main=3D"scripts/main"></SCRIPT>
+
+<META name=3D"GENERATOR" content=3D"MSHTML 11.00.9600.17496"></HEAD>
+<BODY>
+<SCRIPT>document.write("Loading...")</SCRIPT>
+<NOSCRIPT>&lt;div class=3D"noscript-container"&gt; &lt;div =
+class=3D"noscript"&gt;=20
+&lt;img src=3D"/images/logo.png" width=3D"238" height=3D"60" =
+alt=3D"OpenStax CNX" /&gt;=20
+&lt;p&gt;This site requires JavaScript.&lt;/p&gt; &lt;small&gt;Or you =
+can view=20
+the legacy site at &lt;a=20
+href=3D"http://legacy.cnx.org/content"&gt;legacy.cnx.org/content&lt;/a&gt=
+;&lt;/small&gt;=20
+&lt;/div&gt; &lt;/div&gt;</NOSCRIPT> </BODY></HTML>
+
+------=_NextPart_000_0000_01D040D3.5EA43000
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://cnx.org/scripts/require.js
+
+var requirejs,require,define;!function(global){function =
+isFunction(a){return"[object Function]"=3D=3D=3Dostring.call(a)}function =
+isArray(a){return"[object Array]"=3D=3D=3Dostring.call(a)}function =
+each(a,b){if(a){var =
+c;for(c=3D0;c<a.length&&(!a[c]||!b(a[c],c,a));c+=3D1);}}function =
+eachReverse(a,b){if(a){var =
+c;for(c=3Da.length-1;c>-1&&(!a[c]||!b(a[c],c,a));c-=3D1);}}function =
+hasProp(a,b){return hasOwn.call(a,b)}function getOwn(a,b){return =
+hasProp(a,b)&&a[b]}function eachProp(a,b){var c;for(c in =
+a)if(hasProp(a,c)&&b(a[c],c))break}function mixin(a,b,c,d){return =
+b&&eachProp(b,function(b,e){(c||!hasProp(a,e))&&(!d||"object"!=3Dtypeof =
+b||!b||isArray(b)||isFunction(b)||b instanceof =
+RegExp?a[e]=3Db:(a[e]||(a[e]=3D{}),mixin(a[e],b,c,d)))}),a}function =
+bind(a,b){return function(){return b.apply(a,arguments)}}function =
+scripts(){return document.getElementsByTagName("script")}function =
+defaultOnError(a){throw a}function getGlobal(a){if(!a)return a;var =
+b=3Dglobal;return each(a.split("."),function(a){b=3Db[a]}),b}function =
+makeError(a,b,c,d){var e=3Dnew =
+Error(b+"\nhttp://requirejs.org/docs/errors.html#"+a);return =
+e.requireType=3Da,e.requireModules=3Dd,c&&(e.originalError=3Dc),e}functio=
+n newContext(a){function b(a){var =
+b,c;for(b=3D0;b<a.length;b++)if(c=3Da[b],"."=3D=3D=3Dc)a.splice(b,1),b-=3D=
+1;else =
+if(".."=3D=3D=3Dc){if(0=3D=3D=3Db||1=3D=3Db&&".."=3D=3D=3Da[2]||".."=3D=3D=
+=3Da[b-1])continue;b>0&&(a.splice(b-1,2),b-=3D2)}}function c(a,c,d){var =
+e,f,g,h,i,j,k,l,m,n,o,p,q=3Dc&&c.split("/"),r=3Dx.map,s=3Dr&&r["*"];if(a&=
+&(a=3Da.split("/"),k=3Da.length-1,x.nodeIdCompat&&jsSuffixRegExp.test(a[k=
+])&&(a[k]=3Da[k].replace(jsSuffixRegExp,"")),"."=3D=3D=3Da[0].charAt(0)&&=
+q&&(p=3Dq.slice(0,q.length-1),a=3Dp.concat(a)),b(a),a=3Da.join("/")),d&&r=
+&&(q||s)){g=3Da.split("/");a:for(h=3Dg.length;h>0;h-=3D1){if(j=3Dg.slice(=
+0,h).join("/"),q)for(i=3Dq.length;i>0;i-=3D1)if(f=3DgetOwn(r,q.slice(0,i)=
+.join("/")),f&&(f=3DgetOwn(f,j))){l=3Df,m=3Dh;break =
+a}!n&&s&&getOwn(s,j)&&(n=3DgetOwn(s,j),o=3Dh)}!l&&n&&(l=3Dn,m=3Do),l&&(g.=
+splice(0,m,l),a=3Dg.join("/"))}return =
+e=3DgetOwn(x.pkgs,a),e?e:a}function =
+d(a){isBrowser&&each(scripts(),function(b){return =
+b.getAttribute("data-requiremodule")=3D=3D=3Da&&b.getAttribute("data-requ=
+irecontext")=3D=3D=3Du.contextName?(b.parentNode.removeChild(b),!0):void =
+0})}function e(a){var b=3DgetOwn(x.paths,a);return =
+b&&isArray(b)&&b.length>1?(b.shift(),u.require.undef(a),u.makeRequire(nul=
+l,{skipMap:!0})([a]),!0):void 0}function f(a){var =
+b,c=3Da?a.indexOf("!"):-1;return =
+c>-1&&(b=3Da.substring(0,c),a=3Da.substring(c+1,a.length)),[b,a]}function=
+ g(a,b,d,e){var =
+g,h,i,j,k=3Dnull,l=3Db?b.name:null,m=3Da,n=3D!0,o=3D"";return =
+a||(n=3D!1,a=3D"_@r"+(F+=3D1)),j=3Df(a),k=3Dj[0],a=3Dj[1],k&&(k=3Dc(k,l,e=
+),h=3DgetOwn(C,k)),a&&(k?o=3Dh&&h.normalize?h.normalize(a,function(a){ret=
+urn =
+c(a,l,e)}):-1=3D=3D=3Da.indexOf("!")?c(a,l,e):a:(o=3Dc(a,l,e),j=3Df(o),k=3D=
+j[0],o=3Dj[1],d=3D!0,g=3Du.nameToUrl(o))),i=3D!k||h||d?"":"_unnormalized"=
++(G+=3D1),{prefix:k,name:o,parentMap:b,unnormalized:!!i,url:g,originalNam=
+e:m,isDefine:n,id:(k?k+"!"+o:o)+i}}function h(a){var =
+b=3Da.id,c=3DgetOwn(y,b);return c||(c=3Dy[b]=3Dnew =
+u.Module(a)),c}function i(a,b,c){var =
+d=3Da.id,e=3DgetOwn(y,d);!hasProp(C,d)||e&&!e.defineEmitComplete?(e=3Dh(a=
+),e.error&&"error"=3D=3D=3Db?c(e.error):e.on(b,c)):"defined"=3D=3D=3Db&&c=
+(C[d])}function j(a,b){var =
+c=3Da.requireModules,d=3D!1;b?b(a):(each(c,function(b){var =
+c=3DgetOwn(y,b);c&&(c.error=3Da,c.events.error&&(d=3D!0,c.emit("error",a)=
+))}),d||req.onError(a))}function =
+k(){globalDefQueue.length&&(apsp.apply(B,[B.length,0].concat(globalDefQue=
+ue)),globalDefQueue=3D[])}function l(a){delete y[a],delete z[a]}function =
+m(a,b,c){var =
+d=3Da.map.id;a.error?a.emit("error",a.error):(b[d]=3D!0,each(a.depMaps,fu=
+nction(d,e){var =
+f=3Dd.id,g=3DgetOwn(y,f);!g||a.depMatched[e]||c[f]||(getOwn(b,f)?(a.defin=
+eDep(e,C[f]),a.check()):m(g,b,c))}),c[d]=3D!0)}function n(){var =
+a,b,c=3D1e3*x.waitSeconds,f=3Dc&&u.startTime+c<(new =
+Date).getTime(),g=3D[],h=3D[],i=3D!1,k=3D!0;if(!s){if(s=3D!0,eachProp(z,f=
+unction(a){var =
+c=3Da.map,j=3Dc.id;if(a.enabled&&(c.isDefine||h.push(a),!a.error))if(!a.i=
+nited&&f)e(j)?(b=3D!0,i=3D!0):(g.push(j),d(j));else =
+if(!a.inited&&a.fetched&&c.isDefine&&(i=3D!0,!c.prefix))return =
+k=3D!1}),f&&g.length)return a=3DmakeError("timeout","Load timeout for =
+modules: =
+"+g,null,g),a.contextName=3Du.contextName,j(a);k&&each(h,function(a){m(a,=
+{},{})}),f&&!b||!i||!isBrowser&&!isWebWorker||w||(w=3DsetTimeout(function=
+(){w=3D0,n()},50)),s=3D!1}}function =
+o(a){hasProp(C,a[0])||h(g(a[0],null,!0)).init(a[1],a[2])}function =
+p(a,b,c,d){a.detachEvent&&!isOpera?d&&a.detachEvent(d,b):a.removeEventLis=
+tener(c,b,!1)}function q(a){var b=3Da.currentTarget||a.srcElement;return =
+p(b,u.onScriptLoad,"load","onreadystatechange"),p(b,u.onScriptError,"erro=
+r"),{node:b,id:b&&b.getAttribute("data-requiremodule")}}function r(){var =
+a;for(k();B.length;){if(a=3DB.shift(),null=3D=3D=3Da[0])return =
+j(makeError("mismatch","Mismatched anonymous define() module: =
+"+a[a.length-1]));o(a)}}var =
+s,t,u,v,w,x=3D{waitSeconds:7,baseUrl:"./",paths:{},bundles:{},pkgs:{},shi=
+m:{},config:{}},y=3D{},z=3D{},A=3D{},B=3D[],C=3D{},D=3D{},E=3D{},F=3D1,G=3D=
+1;return v=3D{require:function(a){return =
+a.require?a.require:a.require=3Du.makeRequire(a.map)},exports:function(a)=
+{return =
+a.usingExports=3D!0,a.map.isDefine?a.exports?C[a.map.id]=3Da.exports:a.ex=
+ports=3DC[a.map.id]=3D{}:void 0},module:function(a){return =
+a.module?a.module:a.module=3D{id:a.map.id,uri:a.map.url,config:function()=
+{return =
+getOwn(x.config,a.map.id)||{}},exports:a.exports||(a.exports=3D{})}}},t=3D=
+function(a){this.events=3DgetOwn(A,a.id)||{},this.map=3Da,this.shim=3Dget=
+Own(x.shim,a.id),this.depExports=3D[],this.depMaps=3D[],this.depMatched=3D=
+[],this.pluginMaps=3D{},this.depCount=3D0},t.prototype=3D{init:function(a=
+,b,c,d){d=3Dd||{},this.inited||(this.factory=3Db,c?this.on("error",c):thi=
+s.events.error&&(c=3Dbind(this,function(a){this.emit("error",a)})),this.d=
+epMaps=3Da&&a.slice(0),this.errback=3Dc,this.inited=3D!0,this.ignore=3Dd.=
+ignore,d.enabled||this.enabled?this.enable():this.check())},defineDep:fun=
+ction(a,b){this.depMatched[a]||(this.depMatched[a]=3D!0,this.depCount-=3D=
+1,this.depExports[a]=3Db)},fetch:function(){if(!this.fetched){this.fetche=
+d=3D!0,u.startTime=3D(new Date).getTime();var a=3Dthis.map;return =
+this.shim?void =
+u.makeRequire(this.map,{enableBuildCallback:!0})(this.shim.deps||[],bind(=
+this,function(){return =
+a.prefix?this.callPlugin():this.load()})):a.prefix?this.callPlugin():this=
+.load()}},load:function(){var =
+a=3Dthis.map.url;D[a]||(D[a]=3D!0,u.load(this.map.id,a))},check:function(=
+){if(this.enabled&&!this.enabling){var =
+a,b,c=3Dthis.map.id,d=3Dthis.depExports,e=3Dthis.exports,f=3Dthis.factory=
+;if(this.inited){if(this.error)this.emit("error",this.error);else =
+if(!this.defining){if(this.defining=3D!0,this.depCount<1&&!this.defined){=
+if(isFunction(f)){if(this.events.error&&this.map.isDefine||req.onError!=3D=
+=3DdefaultOnError)try{e=3Du.execCb(c,f,d,e)}catch(g){a=3Dg}else =
+e=3Du.execCb(c,f,d,e);if(this.map.isDefine&&void =
+0=3D=3D=3De&&(b=3Dthis.module,b?e=3Db.exports:this.usingExports&&(e=3Dthi=
+s.exports)),a)return =
+a.requireMap=3Dthis.map,a.requireModules=3Dthis.map.isDefine?[this.map.id=
+]:null,a.requireType=3Dthis.map.isDefine?"define":"require",j(this.error=3D=
+a)}else =
+e=3Df;this.exports=3De,this.map.isDefine&&!this.ignore&&(C[c]=3De,req.onR=
+esourceLoad&&req.onResourceLoad(u,this.map,this.depMaps)),l(c),this.defin=
+ed=3D!0}this.defining=3D!1,this.defined&&!this.defineEmitted&&(this.defin=
+eEmitted=3D!0,this.emit("defined",this.exports),this.defineEmitComplete=3D=
+!0)}}else this.fetch()}},callPlugin:function(){var =
+a=3Dthis.map,b=3Da.id,d=3Dg(a.prefix);this.depMaps.push(d),i(d,"defined",=
+bind(this,function(d){var =
+e,f,k,m=3DgetOwn(E,this.map.id),n=3Dthis.map.name,o=3Dthis.map.parentMap?=
+this.map.parentMap.name:null,p=3Du.makeRequire(a.parentMap,{enableBuildCa=
+llback:!0});return =
+this.map.unnormalized?(d.normalize&&(n=3Dd.normalize(n,function(a){return=
+ =
+c(a,o,!0)})||""),f=3Dg(a.prefix+"!"+n,this.map.parentMap),i(f,"defined",b=
+ind(this,function(a){this.init([],function(){return =
+a},null,{enabled:!0,ignore:!0})})),k=3DgetOwn(y,f.id),void(k&&(this.depMa=
+ps.push(f),this.events.error&&k.on("error",bind(this,function(a){this.emi=
+t("error",a)})),k.enable()))):m?(this.map.url=3Du.nameToUrl(m),void =
+this.load()):(e=3Dbind(this,function(a){this.init([],function(){return =
+a},null,{enabled:!0})}),e.error=3Dbind(this,function(a){this.inited=3D!0,=
+this.error=3Da,a.requireModules=3D[b],eachProp(y,function(a){0=3D=3D=3Da.=
+map.id.indexOf(b+"_unnormalized")&&l(a.map.id)}),j(a)}),e.fromText=3Dbind=
+(this,function(c,d){var =
+f=3Da.name,i=3Dg(f),k=3DuseInteractive;d&&(c=3Dd),k&&(useInteractive=3D!1=
+),h(i),hasProp(x.config,b)&&(x.config[f]=3Dx.config[b]);try{req.exec(c)}c=
+atch(l){return j(makeError("fromtexteval","fromText eval for "+b+" =
+failed: =
+"+l,l,[b]))}k&&(useInteractive=3D!0),this.depMaps.push(i),u.completeLoad(=
+f),p([f],e)}),void =
+d.load(a.name,p,e,x))})),u.enable(d,this),this.pluginMaps[d.id]=3Dd},enab=
+le:function(){z[this.map.id]=3Dthis,this.enabled=3D!0,this.enabling=3D!0,=
+each(this.depMaps,bind(this,function(a,b){var =
+c,d,e;if("string"=3D=3Dtypeof =
+a){if(a=3Dg(a,this.map.isDefine?this.map:this.map.parentMap,!1,!this.skip=
+Map),this.depMaps[b]=3Da,e=3DgetOwn(v,a.id))return =
+void(this.depExports[b]=3De(this));this.depCount+=3D1,i(a,"defined",bind(=
+this,function(a){this.defineDep(b,a),this.check()})),this.errback&&i(a,"e=
+rror",bind(this,this.errback))}c=3Da.id,d=3Dy[c],hasProp(v,c)||!d||d.enab=
+led||u.enable(a,this)})),eachProp(this.pluginMaps,bind(this,function(a){v=
+ar =
+b=3DgetOwn(y,a.id);b&&!b.enabled&&u.enable(a,this)})),this.enabling=3D!1,=
+this.check()},on:function(a,b){var =
+c=3Dthis.events[a];c||(c=3Dthis.events[a]=3D[]),c.push(b)},emit:function(=
+a,b){each(this.events[a],function(a){a(b)}),"error"=3D=3D=3Da&&delete =
+this.events[a]}},u=3D{config:x,contextName:a,registry:y,defined:C,urlFetc=
+hed:D,defQueue:B,Module:t,makeModuleMap:g,nextTick:req.nextTick,onError:j=
+,configure:function(a){a.baseUrl&&"/"!=3D=3Da.baseUrl.charAt(a.baseUrl.le=
+ngth-1)&&(a.baseUrl+=3D"/");var =
+b=3Dx.shim,c=3D{paths:!0,bundles:!0,config:!0,map:!0};eachProp(a,function=
+(a,b){c[b]?(x[b]||(x[b]=3D{}),mixin(x[b],a,!0,!0)):x[b]=3Da}),a.bundles&&=
+eachProp(a.bundles,function(a,b){each(a,function(a){a!=3D=3Db&&(E[a]=3Db)=
+})}),a.shim&&(eachProp(a.shim,function(a,c){isArray(a)&&(a=3D{deps:a}),!a=
+.exports&&!a.init||a.exportsFn||(a.exportsFn=3Du.makeShimExports(a)),b[c]=
+=3Da}),x.shim=3Db),a.packages&&each(a.packages,function(a){var =
+b,c;a=3D"string"=3D=3Dtypeof =
+a?{name:a}:a,c=3Da.name,b=3Da.location,b&&(x.paths[c]=3Da.location),x.pkg=
+s[c]=3Da.name+"/"+(a.main||"main").replace(currDirRegExp,"").replace(jsSu=
+ffixRegExp,"")}),eachProp(y,function(a,b){a.inited||a.map.unnormalized||(=
+a.map=3Dg(b))}),(a.deps||a.callback)&&u.require(a.deps||[],a.callback)},m=
+akeShimExports:function(a){function b(){var b;return =
+a.init&&(b=3Da.init.apply(global,arguments)),b||a.exports&&getGlobal(a.ex=
+ports)}return b},makeRequire:function(b,e){function f(c,d,i){var =
+k,l,m;return =
+e.enableBuildCallback&&d&&isFunction(d)&&(d.__requireJsBuild=3D!0),"strin=
+g"=3D=3Dtypeof c?isFunction(d)?j(makeError("requireargs","Invalid =
+require =
+call"),i):b&&hasProp(v,c)?v[c](y[b.id]):req.get?req.get(u,c,b,f):(l=3Dg(c=
+,b,!1,!0),k=3Dl.id,hasProp(C,k)?C[k]:j(makeError("notloaded",'Module =
+name "'+k+'" has not been loaded yet for context: '+a+(b?"":". Use =
+require([])")))):(r(),u.nextTick(function(){r(),m=3Dh(g(null,b)),m.skipMa=
+p=3De.skipMap,m.init(c,d,i,{enabled:!0}),n()}),f)}return =
+e=3De||{},mixin(f,{isBrowser:isBrowser,toUrl:function(a){var =
+d,e=3Da.lastIndexOf("."),f=3Da.split("/")[0],g=3D"."=3D=3D=3Df||".."=3D=3D=
+=3Df;return-1!=3D=3De&&(!g||e>1)&&(d=3Da.substring(e,a.length),a=3Da.subs=
+tring(0,e)),u.nameToUrl(c(a,b&&b.id,!0),d,!0)},defined:function(a){return=
+ hasProp(C,g(a,b,!1,!0).id)},specified:function(a){return =
+a=3Dg(a,b,!1,!0).id,hasProp(C,a)||hasProp(y,a)}}),b||(f.undef=3Dfunction(=
+a){k();var c=3Dg(a,b,!0),e=3DgetOwn(y,a);d(a),delete C[a],delete =
+D[c.url],delete =
+A[a],eachReverse(B,function(b,c){b[0]=3D=3D=3Da&&B.splice(c,1)}),e&&(e.ev=
+ents.defined&&(A[a]=3De.events),l(a))}),f},enable:function(a){var =
+b=3DgetOwn(y,a.id);b&&h(a).enable()},completeLoad:function(a){var =
+b,c,d,f=3DgetOwn(x.shim,a)||{},g=3Df.exports;for(k();B.length;){if(c=3DB.=
+shift(),null=3D=3D=3Dc[0]){if(c[0]=3Da,b)break;b=3D!0}else =
+c[0]=3D=3D=3Da&&(b=3D!0);o(c)}if(d=3DgetOwn(y,a),!b&&!hasProp(C,a)&&d&&!d=
+.inited){if(!(!x.enforceDefine||g&&getGlobal(g)))return e(a)?void =
+0:j(makeError("nodefine","No define call for =
+"+a,null,[a]));o([a,f.deps||[],f.exportsFn])}n()},nameToUrl:function(a,b,=
+c){var =
+d,e,f,g,h,i,j,k=3DgetOwn(x.pkgs,a);if(k&&(a=3Dk),j=3DgetOwn(E,a))return =
+u.nameToUrl(j,b,c);if(req.jsExtRegExp.test(a))h=3Da+(b||"");else{for(d=3D=
+x.paths,e=3Da.split("/"),f=3De.length;f>0;f-=3D1)if(g=3De.slice(0,f).join=
+("/"),i=3DgetOwn(d,g)){isArray(i)&&(i=3Di[0]),e.splice(0,f,i);break}h=3De=
+.join("/"),h+=3Db||(/^data\:|\?/.test(h)||c?"":".js"),h=3D("/"=3D=3D=3Dh.=
+charAt(0)||h.match(/^[\w\+\.\-]+:/)?"":x.baseUrl)+h}return =
+x.urlArgs?h+((-1=3D=3D=3Dh.indexOf("?")?"?":"&")+x.urlArgs):h},load:funct=
+ion(a,b){req.load(u,a,b)},execCb:function(a,b,c,d){return =
+b.apply(d,c)},onScriptLoad:function(a){if("load"=3D=3D=3Da.type||readyReg=
+Exp.test((a.currentTarget||a.srcElement).readyState)){interactiveScript=3D=
+null;var b=3Dq(a);u.completeLoad(b.id)}},onScriptError:function(a){var =
+b=3Dq(a);return e(b.id)?void 0:j(makeError("scripterror","Script error =
+for: "+b.id,a,[b.id]))}},u.require=3Du.makeRequire(),u}function =
+getInteractiveScript(){return =
+interactiveScript&&"interactive"=3D=3D=3DinteractiveScript.readyState?int=
+eractiveScript:(eachReverse(scripts(),function(a){return"interactive"=3D=3D=
+=3Da.readyState?interactiveScript=3Da:void 0}),interactiveScript)}var =
+req,s,head,baseElement,dataMain,src,interactiveScript,currentlyAddingScri=
+pt,mainScript,subPath,version=3D"2.1.15",commentRegExp=3D/(\/\*([\s\S]*?)=
+\*\/|([^:]|^)\/\/(.*)$)/gm,cjsRequireRegExp=3D/[^.]\s*require\s*\(\s*["']=
+([^'"\s]+)["']\s*\)/g,jsSuffixRegExp=3D/\.js$/,currDirRegExp=3D/^\.\//,op=
+=3DObject.prototype,ostring=3Dop.toString,hasOwn=3Dop.hasOwnProperty,ap=3D=
+Array.prototype,apsp=3Dap.splice,isBrowser=3D!("undefined"=3D=3Dtypeof =
+window||"undefined"=3D=3Dtypeof =
+navigator||!window.document),isWebWorker=3D!isBrowser&&"undefined"!=3Dtyp=
+eof importScripts,readyRegExp=3DisBrowser&&"PLAYSTATION =
+3"=3D=3D=3Dnavigator.platform?/^complete$/:/^(complete|loaded)$/,defConte=
+xtName=3D"_",isOpera=3D"undefined"!=3Dtypeof opera&&"[object =
+Opera]"=3D=3D=3Dopera.toString(),contexts=3D{},cfg=3D{},globalDefQueue=3D=
+[],useInteractive=3D!1;if("undefined"=3D=3Dtypeof =
+define){if("undefined"!=3Dtypeof =
+requirejs){if(isFunction(requirejs))return;cfg=3Drequirejs,requirejs=3Dvo=
+id 0}"undefined"=3D=3Dtypeof =
+require||isFunction(require)||(cfg=3Drequire,require=3Dvoid =
+0),req=3Drequirejs=3Dfunction(a,b,c,d){var e,f,g=3DdefContextName;return =
+isArray(a)||"string"=3D=3Dtypeof =
+a||(f=3Da,isArray(b)?(a=3Db,b=3Dc,c=3Dd):a=3D[]),f&&f.context&&(g=3Df.con=
+text),e=3DgetOwn(contexts,g),e||(e=3Dcontexts[g]=3Dreq.s.newContext(g)),f=
+&&e.configure(f),e.require(a,b,c)},req.config=3Dfunction(a){return =
+req(a)},req.nextTick=3D"undefined"!=3Dtypeof =
+setTimeout?function(a){setTimeout(a,4)}:function(a){a()},require||(requir=
+e=3Dreq),req.version=3Dversion,req.jsExtRegExp=3D/^\/|:|\?|\.js$/,req.isB=
+rowser=3DisBrowser,s=3Dreq.s=3D{contexts:contexts,newContext:newContext},=
+req({}),each(["toUrl","undef","defined","specified"],function(a){req[a]=3D=
+function(){var b=3Dcontexts[defContextName];return =
+b.require[a].apply(b,arguments)}}),isBrowser&&(head=3Ds.head=3Ddocument.g=
+etElementsByTagName("head")[0],baseElement=3Ddocument.getElementsByTagNam=
+e("base")[0],baseElement&&(head=3Ds.head=3DbaseElement.parentNode)),req.o=
+nError=3DdefaultOnError,req.createNode=3Dfunction(a){var =
+b=3Da.xhtml?document.createElementNS("http://www.w3.org/1999/xhtml","html=
+:script"):document.createElement("script");return =
+b.type=3Da.scriptType||"text/javascript",b.charset=3D"utf-8",b.async=3D!0=
+,b},req.load=3Dfunction(a,b,c){var =
+d,e=3Da&&a.config||{};if(isBrowser)return =
+d=3Dreq.createNode(e,b,c),d.setAttribute("data-requirecontext",a.contextN=
+ame),d.setAttribute("data-requiremodule",b),!d.attachEvent||d.attachEvent=
+.toString&&d.attachEvent.toString().indexOf("[native =
+code")<0||isOpera?(d.addEventListener("load",a.onScriptLoad,!1),d.addEven=
+tListener("error",a.onScriptError,!1)):(useInteractive=3D!0,d.attachEvent=
+("onreadystatechange",a.onScriptLoad)),d.src=3Dc,currentlyAddingScript=3D=
+d,baseElement?head.insertBefore(d,baseElement):head.appendChild(d),curren=
+tlyAddingScript=3Dnull,d;if(isWebWorker)try{importScripts(c),a.completeLo=
+ad(b)}catch(f){a.onError(makeError("importscripts","importScripts failed =
+for "+b+" at =
+"+c,f,[b]))}},isBrowser&&!cfg.skipDataMain&&eachReverse(scripts(),functio=
+n(a){return =
+head||(head=3Da.parentNode),dataMain=3Da.getAttribute("data-main"),dataMa=
+in?(mainScript=3DdataMain,cfg.baseUrl||(src=3DmainScript.split("/"),mainS=
+cript=3Dsrc.pop(),subPath=3Dsrc.length?src.join("/")+"/":"./",cfg.baseUrl=
+=3DsubPath),mainScript=3DmainScript.replace(jsSuffixRegExp,""),req.jsExtR=
+egExp.test(mainScript)&&(mainScript=3DdataMain),cfg.deps=3Dcfg.deps?cfg.d=
+eps.concat(mainScript):[mainScript],!0):void =
+0}),define=3Dfunction(a,b,c){var d,e;"string"!=3Dtypeof =
+a&&(c=3Db,b=3Da,a=3Dnull),isArray(b)||(c=3Db,b=3Dnull),!b&&isFunction(c)&=
+&(b=3D[],c.length&&(c.toString().replace(commentRegExp,"").replace(cjsReq=
+uireRegExp,function(a,c){b.push(c)}),b=3D(1=3D=3D=3Dc.length?["require"]:=
+["require","exports","module"]).concat(b))),useInteractive&&(d=3Dcurrentl=
+yAddingScript||getInteractiveScript(),d&&(a||(a=3Dd.getAttribute("data-re=
+quiremodule")),e=3Dcontexts[d.getAttribute("data-requirecontext")])),(e?e=
+.defQueue:globalDefQueue).push([a,b,c])},define.amd=3D{jQuery:!0},req.exe=
+c=3Dfunction(text){return eval(text)},req(cfg)}}(this);
+------=_NextPart_000_0000_01D040D3.5EA43000--

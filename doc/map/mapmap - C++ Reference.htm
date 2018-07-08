@@ -1,0 +1,579 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0047)http://www.cplusplus.com/reference/map/map/map/ -->
+<!DOCTYPE html PUBLIC "" ""><HTML><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<TITLE>map::map - C++ Reference</TITLE> <LINK href="http://www.cplusplus.com/reference/map/map/map/" 
+rel="canonical"> <LINK href="/favicon.ico" rel="shortcut icon" type="image/x-icon"> 
+<LINK href="mapmap%20-%20C++%20Reference_files/main.css" rel="stylesheet" type="text/css"> 
+<SCRIPT src="mapmap%20-%20C++%20Reference_files/main.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17496"></HEAD> 
+<BODY>
+<DIV id="I_top">
+<DIV id="I_header">
+<DIV id="I_logo"><A title="cplusplus.com" href="http://www.cplusplus.com/">
+<DIV></DIV></A></DIV>
+<DIV id="I_search">
+<FORM id="search" action="/search.do" method="get">Search: 
+<INPUT name="q" class="txt" size="20"> <INPUT class="btn" type="submit" value="Go"> 
+</FORM></DIV>
+<DIV id="I_bar">
+<UL>
+  <LI><A href="http://www.cplusplus.com/reference/">Reference</A></LI>
+  <LI><A href="http://www.cplusplus.com/reference/map/">&lt;map&gt;</A></LI>
+  <LI><A href="http://www.cplusplus.com/reference/map/map/">map</A></LI>
+  <LI class="here">map</LI></UL></DIV>
+<DIV class="C_LoginBox" id="I_user"><SPAN title="ajax"></SPAN></DIV></DIV></DIV>
+<DIV id="I_mid">
+<DIV id="I_wrap">
+<DIV id="I_minheight"></DIV>
+<DIV id="I_main">
+<DIV class="C_support">
+<SCRIPT type="text/javascript"><!--
+if (!cookieGet("hspt31")) {
+  document.write('<div class="C_DonateBox"></div>');
+}
+//-->
+</SCRIPT>
+
+<DIV class="C_ad728">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="mapmap%20-%20C++%20Reference_files/f.txt" type="text/javascript"></SCRIPT>
+</DIV>
+<DIV class="C_supportbottom"></DIV></DIV>
+<DIV id="I_content">
+<DIV class="C_doc">
+<DIV id="I_type">public member function </DIV>
+<DIV id="I_file">&lt;map&gt; </DIV>
+<H1><SPAN title="namespace std" class="namespace">std::</SPAN><A href="http://www.cplusplus.com/reference/map/map/">map</A>::map</H1>
+<DIV class="C_prototype">
+<DIV class="C_SwitchCases">
+<DIV title="C++98">
+<TABLE>
+  <TBODY>
+  <TR class="odd">
+    <TH>empty (1)</TH>
+    <TD>
+<PRE>explicit map (const key_compare&amp; comp = key_compare(),
+              const allocator_type&amp; alloc = allocator_type());
+</PRE></TD></TR>
+  <TR class="even">
+    <TH>range (2)</TH>
+    <TD>
+<PRE>template &lt;class InputIterator&gt;
+  map (InputIterator first, InputIterator last,
+       const key_compare&amp; comp = key_compare(),
+       const allocator_type&amp; alloc = allocator_type());
+</PRE></TD></TR>
+  <TR class="odd">
+    <TH>copy (3)</TH>
+    <TD>
+<PRE>map (const map&amp; x);
+</PRE></TD></TR></TBODY></TABLE></DIV>
+<DIV title="C++11" class="off">
+<TABLE>
+  <TBODY>
+  <TR class="even">
+    <TH>empty (1)</TH>
+    <TD>
+<PRE>explicit map (const key_compare&amp; comp = key_compare(),
+              const allocator_type&amp; alloc = allocator_type());
+explicit map (const allocator_type&amp; alloc);
+</PRE></TD></TR>
+  <TR class="odd">
+    <TH>range (2)</TH>
+    <TD>
+<PRE>template &lt;class InputIterator&gt;
+  map (InputIterator first, InputIterator last,
+       const key_compare&amp; comp = key_compare(),
+       const allocator_type&amp; = allocator_type());
+</PRE></TD></TR>
+  <TR class="even">
+    <TH>copy (3)</TH>
+    <TD>
+<PRE>map (const map&amp; x);
+map (const map&amp; x, const allocator_type&amp; alloc);
+</PRE></TD></TR>
+  <TR class="odd">
+    <TH>move (4)</TH>
+    <TD>
+<PRE>map (map&amp;&amp; x);
+map (map&amp;&amp; x, const allocator_type&amp; alloc);
+</PRE></TD></TR>
+  <TR class="even">
+    <TH>initializer list (5)</TH>
+    <TD>
+<PRE>map (initializer_list&lt;value_type&gt; il,
+     const key_compare&amp; comp = key_compare(),
+     const allocator_type&amp; alloc = allocator_type());
+</PRE></TD></TR></TBODY></TABLE></DIV>
+<DIV title="C++14" class="off">
+<TABLE>
+  <TBODY>
+  <TR class="odd">
+    <TH>empty (1)</TH>
+    <TD>
+<PRE>map();
+explicit map (const key_compare&amp; comp,
+              const allocator_type&amp; alloc = allocator_type());
+explicit map (const allocator_type&amp; alloc);
+</PRE></TD></TR>
+  <TR class="even">
+    <TH>range (2)</TH>
+    <TD>
+<PRE>template &lt;class InputIterator&gt;
+  map (InputIterator first, InputIterator last,
+       const key_compare&amp; comp = key_compare(),
+       const allocator_type&amp; = allocator_type());
+template &lt;class InputIterator&gt;
+  map (InputIterator first, InputIterator last,
+       const allocator_type&amp; = allocator_type());
+</PRE></TD></TR>
+  <TR class="odd">
+    <TH>copy (3)</TH>
+    <TD>
+<PRE>map (const map&amp; x);
+map (const map&amp; x, const allocator_type&amp; alloc);
+</PRE></TD></TR>
+  <TR class="even">
+    <TH>move (4)</TH>
+    <TD>
+<PRE>map (map&amp;&amp; x);
+map (map&amp;&amp; x, const allocator_type&amp; alloc);
+</PRE></TD></TR>
+  <TR class="odd">
+    <TH>initializer list (5)</TH>
+    <TD>
+<PRE>map (initializer_list&lt;value_type&gt; il,
+     const key_compare&amp; comp = key_compare(),
+     const allocator_type&amp; alloc = allocator_type());
+map (initializer_list&lt;value_type&gt; il,
+     const allocator_type&amp; alloc = allocator_type());
+</PRE></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<DIV id="I_description">Construct map</DIV><SECTION id="description">Constructs 
+a <A href="http://www.cplusplus.com/map">map</A> container object, initializing 
+its contents depending on the constructor version used:<BR><BR>
+<DIV class="C_SwitchCases">
+<DIV title="C++98">
+<DL>
+  <DT>(1) empty container constructor (default constructor)</DT>
+  <DD>Constructs an <A href="http://www.cplusplus.com/map::empty">empty</A> 
+  container, with no elements.</DD>
+  <DT>(2) range constructor</DT>
+  <DD>Constructs a container with as many elements as the range 
+  <TT>[first,last)</TT>, with each element constructed from its corresponding 
+  element in that range.</DD>
+  <DT>(3) copy constructor</DT>
+  <DD>Constructs a container with a copy of each of the elements in 
+  <I>x</I>.</DD></DL><BR>The container keeps an internal copy of <I>alloc</I> and 
+<I>comp</I>, which are used to allocate storage and to sort the elements 
+throughout its lifetime.<BR>The copy constructor <I>(3)</I> creates a container 
+that keeps and uses copies of <I>x</I>'s <A href="http://www.cplusplus.com/map::get_allocator">allocator</A> 
+and <A href="http://www.cplusplus.com/map::key_comp">comparison 
+object</A>.<BR><BR>The storage for the elements is allocated using this <A href="http://www.cplusplus.com/map::get_allocator">internal 
+allocator</A>.<BR></DIV>
+<DIV title="C++11">
+<DL>
+  <DT>(1) empty container constructors (default constructor)</DT>
+  <DD>Constructs an <A href="http://www.cplusplus.com/map::empty">empty</A> 
+  container, with no elements.</DD>
+  <DT>(2) range constructor</DT>
+  <DD>Constructs a container with as many elements as the range 
+  <TT>[first,last)</TT>, with each element <I>emplace-constructed</I> from its 
+  corresponding element in that range.</DD>
+  <DT>(3) copy constructor (and copying with allocator)</DT>
+  <DD>Constructs a container with a copy of each of the elements in 
+  <I>x</I>.</DD>
+  <DT>(4) move constructor (and moving with allocator)</DT>
+  <DD>Constructs a container that acquires the elements of <I>x</I>.<BR>If 
+  <I>alloc</I> is specified and is different from <I>x</I>'s allocator, the 
+  elements are moved. Otherwise, no elements are constructed (their ownership is 
+  directly transferred).<BR><I>x</I> is left in an unspecified but valid 
+  state.</DD>
+  <DT>(5) initializer list constructor</DT>
+  <DD>Constructs a container with a copy of each of the elements in 
+  <I>il</I>.</DD></DL><BR>The container keeps an internal copy of <I>alloc</I>, 
+which is used to allocate and deallocate storage for its elements, and to 
+construct and destroy them (as specified by its <A href="http://www.cplusplus.com/allocator_traits">allocator_traits</A>). 
+If no <VAR>alloc</VAR> argument is passed to the constructor, a 
+default-constructed allocator is used, except in the following cases:<BR>- The 
+copy constructor <I>(3, first signature)</I> creates a container that keeps and 
+uses a copy of the allocator returned by calling the appropriate <A href="http://www.cplusplus.com/allocator_traits::select_on_container_copy_construction">selected_on_container_copy_construction</A> 
+trait on <I>x</I>'s allocator.<BR>- The move constructor <I>(4, first 
+signature)</I> acquires <I>x</I>'s allocator.<BR><BR>The container also keeps an 
+internal copy of <I>comp</I> (or <I>x</I>'s <A href="http://www.cplusplus.com/map::key_comp">comparison 
+object</A>), which is used to establish the order of the elements in the 
+container and to check for elements with equivalent keys.<BR><BR>All elements 
+are <I>copied</I>, <I>moved</I> or otherwise <I>constructed</I> by calling <A 
+href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</A> 
+with the appropriate arguments.<BR></DIV></DIV><BR>The elements are sorted 
+according to the <A href="http://www.cplusplus.com/map::key_comp">comparison 
+object</A>. If more than one element with equivalent keys is passed to the 
+constructor, only the first one is preserved.<BR></SECTION><BR><SECTION id="parameters">
+<H3>Parameters</H3>
+<DL>
+  <DT>comp</DT>
+  <DD>Binary predicate that, taking two <I>element keys</I> as argument, returns 
+  <TT>true</TT> if the first argument goes before the second argument in the 
+  <I>strict weak ordering</I> it defines, and <TT>false</TT> otherwise.<BR>This 
+  shall be a function pointer or a function object.<BR>Member type 
+  <TT>key_compare</TT> is the internal comparison object type used by the 
+  container, defined in <A href="http://www.cplusplus.com/map">map</A> as an 
+  alias of its third template parameter (<TT>Compare</TT>).<BR>If 
+  <TT>key_compare</TT> uses the default <A 
+  href="http://www.cplusplus.com/less">less</A> (which has no state), this 
+  parameter is not relevant.</DD>
+  <DT>alloc</DT>
+  <DD>Allocator object.<BR>The container keeps and uses an internal copy of this 
+  allocator.<BR>Member type <TT>allocator_type</TT> is the internal allocator 
+  type used by the container, defined in <A 
+  href="http://www.cplusplus.com/map">map</A> as an alias of its fourth template 
+  parameter (<TT>Alloc</TT>).<BR>If <TT>allocator_type</TT> is an instantiation 
+  of the default <A href="http://www.cplusplus.com/allocator">allocator</A> 
+  (which has no state), this parameter is not relevant.</DD>
+  <DT>first, last</DT>
+  <DD><A href="http://www.cplusplus.com/InputIterator">Input iterators</A> to 
+  the initial and final positions in a range. The range used is 
+  <TT>[first,last)</TT>, which includes all the elements between <I>first</I> 
+  and <I>last</I>, including the element pointed by <I>first</I> but not the 
+  element pointed by <I>last</I>.<BR>The function template argument 
+  <TT>InputIterator</TT> shall be an <A href="http://www.cplusplus.com/InputIterator">input 
+  iterator</A> type that points to elements of a type from which 
+  <TT>value_type</TT> objects can be constructed (in <A href="http://www.cplusplus.com/map">map</A>, 
+  <TT>value_type</TT> is an alias of <TT><A 
+  href="http://www.cplusplus.com/pair">pair</A>&lt;const key_type, 
+  mapped_type&gt;</TT>)</DD>
+  <DT>x</DT>
+  <DD>Another <A href="http://www.cplusplus.com/map">map</A> object of the same 
+  type (with the same class template arguments <TT>Key</TT>, <TT>T</TT>, 
+  <TT>Compare</TT> and <TT>Alloc</TT>), whose contents are either copied or 
+  acquired.<BR></DD>
+  <DT>il</DT>
+  <DD>An <A 
+  href="http://www.cplusplus.com/initializer_list">initializer_list</A> 
+  object.<BR>These objects are automatically constructed from <I>initializer 
+  list</I> declarators.<BR>Member type <TT>value_type</TT> is the type of the 
+  elements in the container, defined in <A 
+  href="http://www.cplusplus.com/map">map</A> as an alias of <TT><A href="http://www.cplusplus.com/pair">pair</A>&lt;const 
+  key_type, mapped_type&gt;</TT> (see <A href="http://www.cplusplus.com/map#types">map 
+  types</A>).</DD></DL></SECTION><BR><SECTION id="example">
+<H3>Example</H3>
+<DIV class="auto">
+<TABLE class="snippet">
+  <TBODY>
+  <TR>
+    <TD class="rownum">
+<PRE><CODE>1<BR>2<BR>3<BR>4<BR>5<BR>6<BR>7<BR>8<BR>9<BR>10<BR>11<BR>12<BR>13<BR>14<BR>15<BR>16<BR>17<BR>18<BR>19<BR>20<BR>21<BR>22<BR>23<BR>24<BR>25<BR>26<BR>27<BR>28<BR>29<BR>30<BR>31<BR></CODE></PRE></TD>
+    <TD class="source">
+<PRE><CODE><CITE>// constructing maps</CITE>
+<DFN>#include &lt;iostream&gt;</DFN>
+<DFN>#include &lt;map&gt;</DFN>
+
+<VAR>bool</VAR> fncomp (<VAR>char</VAR> lhs, <VAR>char</VAR> rhs) {<VAR>return</VAR> lhs&lt;rhs;}
+
+<VAR>struct</VAR> classcomp {
+  <VAR>bool</VAR> <VAR>operator</VAR>() (<VAR>const</VAR> <VAR>char</VAR>&amp; lhs, <VAR>const</VAR> <VAR>char</VAR>&amp; rhs) <VAR>const</VAR>
+  {<VAR>return</VAR> lhs&lt;rhs;}
+};
+
+<VAR>int</VAR> main ()
+{
+  std::map&lt;<VAR>char</VAR>,<VAR>int</VAR>&gt; first;
+
+  first[<KBD>'a'</KBD>]=10;
+  first[<KBD>'b'</KBD>]=30;
+  first[<KBD>'c'</KBD>]=50;
+  first[<KBD>'d'</KBD>]=70;
+
+  std::map&lt;<VAR>char</VAR>,<VAR>int</VAR>&gt; second (first.begin(),first.end());
+
+  std::map&lt;<VAR>char</VAR>,<VAR>int</VAR>&gt; third (second);
+
+  std::map&lt;<VAR>char</VAR>,<VAR>int</VAR>,classcomp&gt; fourth;                 <CITE>// class as Compare</CITE>
+
+  <VAR>bool</VAR>(*fn_pt)(<VAR>char</VAR>,<VAR>char</VAR>) = fncomp;
+  std::map&lt;<VAR>char</VAR>,<VAR>int</VAR>,<VAR>bool</VAR>(*)(<VAR>char</VAR>,<VAR>char</VAR>)&gt; fifth (fn_pt); <CITE>// function pointer as Compare</CITE>
+
+  <VAR>return</VAR> 0;
+}</CODE></PRE></TD>
+    <TD class="C_btnholder"></TD></TR></TBODY></TABLE></DIV><BR><BR>The code does 
+not produce any output, but demonstrates some ways in which a <A href="http://www.cplusplus.com/map">map</A> 
+container can be constructed.<BR></SECTION><BR><SECTION id="complexity">
+<H3>Complexity</H3>Constant for the <I>empty constructors (1)</I>, and for the 
+<I>move constructors (4)</I> (unless <I>alloc</I> is different from <I>x</I>'s 
+allocator).<BR>For all other cases, linear in the distance between the iterators 
+(copy constructions) if the elements are already sorted according to the same 
+criterion. For unsorted sequences, linearithmic (<TT>N*logN</TT>) in that 
+distance (sorting,copy constructions).<BR></SECTION><BR><SECTION id="validity">
+<H3>Iterator validity</H3>The <I>move constructors</I> (4), invalidate all 
+iterators, pointers and references related to <I>x</I> if the elements are 
+moved.<BR></SECTION><BR><SECTION id="access">
+<H3>Data races</H3>All copied elements are accessed.<BR>The <I>move constructors 
+(4)</I> modify <I>x</I>.<BR></SECTION><BR><SECTION id="exceptions">
+<H3>Exception safety</H3><B>Strong guarantee:</B> no effects in case an 
+exception is thrown.<BR>If <A href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</A> 
+is not supported with the appropriate arguments for the element constructions, 
+or if the range specified by <TT>[first,last)</TT> is not valid, it causes 
+<I>undefined behavior</I>.<BR></SECTION><BR><SECTION id="see">
+<H3>See also</H3>
+<DL class="links">
+  <DT><A 
+  href="http://www.cplusplus.com/reference/map/map/operator=/"><B>map::operator=</B></A></DT>
+  <DD>Copy container content <SPAN class="typ">(public member function
+   )</SPAN></DD></DL>
+<DL class="links">
+  <DT><A 
+  href="http://www.cplusplus.com/reference/map/map/insert/"><B>map::insert</B></A></DT>
+  <DD>Insert elements <SPAN class="typ">(public member function
+ )</SPAN></DD></DL></SECTION></DIV>
+<DIV id="CH_bb"></DIV></DIV>
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="mapmap%20-%20C++%20Reference_files/f.txt" type="text/javascript"></SCRIPT>
+</DIV>
+<DIV id="I_nav">
+<DIV class="sect root">
+<H3><B><A href="http://www.cplusplus.com/">C++</A></B></H3>
+<UL>
+  <LI class="folder info"><A 
+  href="http://www.cplusplus.com/info/">Information</A></LI>
+  <LI class="folder doc"><A 
+  href="http://www.cplusplus.com/doc/">Tutorials</A></LI>
+  <LI class="folder selected reference"><A href="http://www.cplusplus.com/reference/">Reference</A></LI>
+  <LI class="folder articles"><A 
+  href="http://www.cplusplus.com/articles/">Articles</A></LI>
+  <LI class="folder forum"><A 
+  href="http://www.cplusplus.com/forum/">Forum</A></LI></UL></DIV>
+<DIV class="C_BoxLabels C_BoxSort sect" id="reference_box">
+<H3><B><A href="http://www.cplusplus.com/reference/">Reference</A></B></H3>
+<UL>
+  <LI class="C_Collapsable collapsed">
+  <H4><A href="http://www.cplusplus.com/reference/clibrary/">C library:</A></H4>
+  <UL>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cassert/"><SPAN>&lt;cassert&gt; 
+    (assert.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cctype/"><SPAN>&lt;cctype&gt; 
+    (ctype.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cerrno/"><SPAN>&lt;cerrno&gt; 
+    (errno.h)</SPAN></A></LI>
+    <LI class="c99 cpp11 folder"><A href="http://www.cplusplus.com/reference/cfenv/"><SPAN>&lt;cfenv&gt; 
+    (fenv.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cfloat/"><SPAN>&lt;cfloat&gt; 
+    (float.h)</SPAN></A></LI>
+    <LI class="c99 cpp11 folder"><A href="http://www.cplusplus.com/reference/cinttypes/"><SPAN>&lt;cinttypes&gt; 
+    (inttypes.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/ciso646/"><SPAN>&lt;ciso646&gt; 
+    (iso646.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/climits/"><SPAN>&lt;climits&gt; 
+    (limits.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/clocale/"><SPAN>&lt;clocale&gt; 
+    (locale.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cmath/"><SPAN>&lt;cmath&gt; 
+    (math.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/csetjmp/"><SPAN>&lt;csetjmp&gt; 
+    (setjmp.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/csignal/"><SPAN>&lt;csignal&gt; 
+    (signal.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cstdarg/"><SPAN>&lt;cstdarg&gt; 
+    (stdarg.h)</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/cstdbool/"><SPAN>&lt;cstdbool&gt; 
+    (stdbool.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cstddef/"><SPAN>&lt;cstddef&gt; 
+    (stddef.h)</SPAN></A></LI>
+    <LI class="c99 cpp11 folder"><A href="http://www.cplusplus.com/reference/cstdint/"><SPAN>&lt;cstdint&gt; 
+    (stdint.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cstdio/"><SPAN>&lt;cstdio&gt; 
+    (stdio.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cstdlib/"><SPAN>&lt;cstdlib&gt; 
+    (stdlib.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cstring/"><SPAN>&lt;cstring&gt; 
+    (string.h)</SPAN></A></LI>
+    <LI class="c99 cpp11 folder"><A href="http://www.cplusplus.com/reference/ctgmath/"><SPAN>&lt;ctgmath&gt; 
+    (tgmath.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/ctime/"><SPAN>&lt;ctime&gt; 
+    (time.h)</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/cuchar/"><SPAN>&lt;cuchar&gt; 
+    (uchar.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cwchar/"><SPAN>&lt;cwchar&gt; 
+    (wchar.h)</SPAN></A></LI>
+    <LI class="c90 c99 arm cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/cwctype/"><SPAN>&lt;cwctype&gt; 
+    (wctype.h)</SPAN></A></LI></UL></LI>
+  <LI class="C_Collapsable">
+  <H4><A href="http://www.cplusplus.com/reference/stl/">Containers:</A></H4>
+  <UL>
+    <LI class="cpp11 folder"><A 
+    href="http://www.cplusplus.com/reference/array/"><SPAN>&lt;array&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/deque/"><SPAN>&lt;deque&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/forward_list/"><SPAN>&lt;forward_list&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/list/"><SPAN>&lt;list&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 selected folder"><A href="http://www.cplusplus.com/reference/map/"><SPAN>&lt;map&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/queue/"><SPAN>&lt;queue&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/set/"><SPAN>&lt;set&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/stack/"><SPAN>&lt;stack&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/unordered_map/"><SPAN>&lt;unordered_map&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/unordered_set/"><SPAN>&lt;unordered_set&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/vector/"><SPAN>&lt;vector&gt;</SPAN></A></LI></UL></LI>
+  <LI class="C_Collapsable collapsed">
+  <H4><A 
+  href="http://www.cplusplus.com/reference/iolibrary/">Input/Output:</A></H4>
+  <UL>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/fstream/"><SPAN>&lt;fstream&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/iomanip/"><SPAN>&lt;iomanip&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/ios/"><SPAN>&lt;ios&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/iosfwd/"><SPAN>&lt;iosfwd&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/iostream/"><SPAN>&lt;iostream&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/istream/"><SPAN>&lt;istream&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/ostream/"><SPAN>&lt;ostream&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/sstream/"><SPAN>&lt;sstream&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/streambuf/"><SPAN>&lt;streambuf&gt;</SPAN></A></LI></UL></LI>
+  <LI class="C_Collapsable collapsed">
+  <H4><A 
+  href="http://www.cplusplus.com/reference/multithreading/">Multi-threading:</A></H4>
+  <UL>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/atomic/"><SPAN>&lt;atomic&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/condition_variable/"><SPAN>&lt;condition_variable&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/future/"><SPAN>&lt;future&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A 
+    href="http://www.cplusplus.com/reference/mutex/"><SPAN>&lt;mutex&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/thread/"><SPAN>&lt;thread&gt;</SPAN></A></LI></UL></LI>
+  <LI class="C_Collapsable collapsed">
+  <H4><A href="http://www.cplusplus.com/reference/std/">Other:</A></H4>
+  <UL>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/algorithm/"><SPAN>&lt;algorithm&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/bitset/"><SPAN>&lt;bitset&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/chrono/"><SPAN>&lt;chrono&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/codecvt/"><SPAN>&lt;codecvt&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/complex/"><SPAN>&lt;complex&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/exception/"><SPAN>&lt;exception&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/functional/"><SPAN>&lt;functional&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/initializer_list/"><SPAN>&lt;initializer_list&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/iterator/"><SPAN>&lt;iterator&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/limits/"><SPAN>&lt;limits&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/locale/"><SPAN>&lt;locale&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/memory/"><SPAN>&lt;memory&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/new/"><SPAN>&lt;new&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/numeric/"><SPAN>&lt;numeric&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/random/"><SPAN>&lt;random&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A 
+    href="http://www.cplusplus.com/reference/ratio/"><SPAN>&lt;ratio&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A 
+    href="http://www.cplusplus.com/reference/regex/"><SPAN>&lt;regex&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/stdexcept/"><SPAN>&lt;stdexcept&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/string/"><SPAN>&lt;string&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/system_error/"><SPAN>&lt;system_error&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A 
+    href="http://www.cplusplus.com/reference/tuple/"><SPAN>&lt;tuple&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/typeindex/"><SPAN>&lt;typeindex&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/typeinfo/"><SPAN>&lt;typeinfo&gt;</SPAN></A></LI>
+    <LI class="cpp11 folder"><A href="http://www.cplusplus.com/reference/type_traits/"><SPAN>&lt;type_traits&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/utility/"><SPAN>&lt;utility&gt;</SPAN></A></LI>
+    <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/valarray/"><SPAN>&lt;valarray&gt;</SPAN></A></LI></UL></LI></UL></DIV>
+<DIV class="C_BoxLabels C_BoxSort sect cpp98 cpp11" id="map_box">
+<H3><B><A 
+href="http://www.cplusplus.com/reference/map/">&lt;map&gt;</A></B></H3>
+<UL>
+  <LI class="cpp98 cpp11 selected folder"><A href="http://www.cplusplus.com/reference/map/map/"><SPAN>map</SPAN></A></LI>
+  <LI class="cpp98 cpp11 folder"><A href="http://www.cplusplus.com/reference/map/multimap/"><SPAN>multimap</SPAN></A></LI></UL></DIV>
+<DIV class="C_BoxLabels C_BoxSort sect cpp98 cpp11" id="map_box">
+<H3><B><A href="http://www.cplusplus.com/reference/map/map/">map</A></B></H3>
+<UL>
+  <LI class="cpp98 cpp11 selected"><A href="http://www.cplusplus.com/reference/map/map/map/"><SPAN>map::map</SPAN></A></LI>
+  <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/~map/"><SPAN>map::~map</SPAN></A></LI>
+  <LI class="C_Collapsable">
+  <H4>member functions:</H4>
+  <UL>
+    <LI class="cpp11"><A 
+    href="http://www.cplusplus.com/reference/map/map/at/"><SPAN>map::at</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/begin/"><SPAN>map::begin</SPAN></A></LI>
+    <LI class="cpp11"><A href="http://www.cplusplus.com/reference/map/map/cbegin/"><SPAN>map::cbegin</SPAN></A></LI>
+    <LI class="cpp11"><A 
+    href="http://www.cplusplus.com/reference/map/map/cend/"><SPAN>map::cend</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/clear/"><SPAN>map::clear</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/count/"><SPAN>map::count</SPAN></A></LI>
+    <LI class="cpp11"><A href="http://www.cplusplus.com/reference/map/map/crbegin/"><SPAN>map::crbegin</SPAN></A></LI>
+    <LI class="cpp11"><A href="http://www.cplusplus.com/reference/map/map/crend/"><SPAN>map::crend</SPAN></A></LI>
+    <LI class="cpp11"><A href="http://www.cplusplus.com/reference/map/map/emplace/"><SPAN>map::emplace</SPAN></A></LI>
+    <LI class="cpp11"><A href="http://www.cplusplus.com/reference/map/map/emplace_hint/"><SPAN>map::emplace_hint</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/empty/"><SPAN>map::empty</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/end/"><SPAN>map::end</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/equal_range/"><SPAN>map::equal_range</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/erase/"><SPAN>map::erase</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/find/"><SPAN>map::find</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/get_allocator/"><SPAN>map::get_allocator</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/insert/"><SPAN>map::insert</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/key_comp/"><SPAN>map::key_comp</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/lower_bound/"><SPAN>map::lower_bound</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/max_size/"><SPAN>map::max_size</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/operator=/"><SPAN>map::operator=</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/operator[]/"><SPAN>map::operator[]</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/rbegin/"><SPAN>map::rbegin</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/rend/"><SPAN>map::rend</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/size/"><SPAN>map::size</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/swap/"><SPAN>map::swap</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/upper_bound/"><SPAN>map::upper_bound</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/value_comp/"><SPAN>map::value_comp</SPAN></A></LI></UL></LI>
+  <LI class="C_Collapsable">
+  <H4>non-member overloads:</H4>
+  <UL>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/operators/"><SPAN>relational 
+    operators (map)</SPAN></A></LI>
+    <LI class="cpp98 cpp11"><A href="http://www.cplusplus.com/reference/map/map/swap-free/"><SPAN>swap 
+    (map)</SPAN></A></LI></UL></LI></UL></DIV>
+<DIV id="I_subnav"></DIV>
+<DIV class="C_ad234">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="mapmap%20-%20C++%20Reference_files/f.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<DIV id="I_midclear"></DIV></DIV></DIV>
+<DIV id="I_bottom">
+<DIV id="I_footer"><A href="http://www.cplusplus.com/">Home page</A> | <A href="http://www.cplusplus.com/privacy.do">Privacy 
+policy</A><BR>© cplusplus.com, 2000-2015 - All rights reserved - 
+<I>v3.1</I><BR><A href="http://www.cplusplus.com/contact.do?referrer=www.cplusplus.com%2Freference%2Fmap%2Fmap%2Fmap%2F">Spotted 
+an error? contact us</A> </DIV></DIV>
+<SCRIPT type="text/javascript">
+<!--
+ onSession ( function(us) {
+		el=document.getElementById('CH_bb'); el.innerHTML='';
+		if (us.auth(4096)) {
+			
+			el.appendChild(btn('Edit Page','Edit Page','edit','/reference/edit.cgi?a=map+map+map'));
+			el.appendChild(btn('Delete Page','Delete Page','delete','javascript:docdel()'));
+		}
+	});
+	function docdel() { if (confirm('WARNING: You are about to delete this page. Confirm?')) window.location='/reference/delete.cgi?a=map+map+map'; }
+	ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</SCRIPT>
+ </BODY></HTML>

@@ -1,0 +1,1224 @@
+body {
+	color: black; font-family: verdana,arial,helvetica,sans-serif; font-size: 12px;
+}
+table {
+	color: black; font-family: verdana,arial,helvetica,sans-serif; font-size: 12px;
+}
+input {
+	color: black; font-family: verdana,arial,helvetica,sans-serif; font-size: 12px;
+}
+select {
+	color: black; font-family: verdana,arial,helvetica,sans-serif; font-size: 12px;
+}
+textarea {
+	color: black; font-family: verdana,arial,helvetica,sans-serif; font-size: 12px;
+}
+body {
+	margin: 0px;
+}
+form {
+	margin: 0px;
+}
+pre {
+	margin: 0px;
+}
+div {
+	margin: 0px;
+}
+body {
+	background: rgb(215, 215, 215);
+}
+img {
+	border: 0px currentColor; border-image: none;
+}
+a:link {
+	color: rgb(0, 0, 112); text-decoration: none;
+}
+a:visited {
+	color: rgb(0, 0, 112); text-decoration: none;
+}
+a:active {
+	color: rgb(0, 0, 112); text-decoration: none;
+}
+a:hover {
+	color: rgb(0, 0, 160); text-decoration: underline;
+}
+.C_ico {
+	margin: 0px; padding: 0px; width: 16px; height: 16px; line-height: 16px; vertical-align: middle; display: inline-block; background-image: url("bg.png"); background-repeat: no-repeat;
+}
+.eye.C_ico {
+	background-position: 0px -16px;
+}
+.new.C_ico {
+	background-position: -16px -16px;
+}
+.edit.C_ico {
+	background-position: -32px -16px;
+}
+.delete.C_ico {
+	background-position: -48px -16px;
+}
+.ok.C_ico {
+	background-position: -64px -16px;
+}
+.cancel.C_ico {
+	background-position: -80px -16px;
+}
+.postnew.C_ico {
+	background-position: -96px -16px;
+}
+.postreply.C_ico {
+	background-position: -112px -16px;
+}
+.docnew.C_ico {
+	background-position: -128px -16px;
+}
+.docok.C_ico {
+	background-position: -144px -16px;
+}
+.doccancel.C_ico {
+	background-position: -160px -16px;
+}
+.tag.C_ico {
+	background-position: -176px -16px;
+}
+.envelopesend.C_ico {
+	background-position: -192px -16px;
+}
+.recycle.C_ico {
+	background-position: -208px -16px;
+}
+.bookmark.C_ico {
+	background-position: -224px -16px;
+}
+.bookmarkno.C_ico {
+	background-position: -240px -16px;
+}
+.mailpencil.C_ico {
+	background-position: 0px -32px;
+}
+.mailreceive.C_ico {
+	background-position: -16px -32px;
+}
+.mailno.C_ico {
+	background-position: -32px -32px;
+}
+.mailnew.C_ico {
+	background-position: -48px -32px;
+}
+.mailforward.C_ico {
+	background-position: -64px -32px;
+}
+.mailreply.C_ico {
+	background-position: -80px -32px;
+}
+.inbox.C_ico {
+	background-position: -96px -32px;
+}
+.outbox.C_ico {
+	background-position: -112px -32px;
+}
+.moved.C_ico {
+	background-position: -144px -32px;
+}
+.doc.C_ico {
+	background-position: -160px -32px;
+}
+.default.C_ico {
+	background-position: -160px -32px;
+}
+.comment.C_ico {
+	background-position: -176px -32px;
+}
+.news.C_ico {
+	background-position: -192px -32px;
+}
+.question.C_ico {
+	background-position: -208px -32px;
+}
+.closed.C_ico {
+	background-position: -224px -32px;
+}
+.solved.C_ico {
+	background-position: -240px -32px;
+}
+.settings.C_ico {
+	background-position: 0px -48px;
+}
+.profile.C_ico {
+	background-position: -16px -48px;
+}
+.profileedit.C_ico {
+	background-position: -32px -48px;
+}
+.user.C_ico {
+	background-position: -48px -48px;
+}
+.userpencil.C_ico {
+	background-position: -64px -48px;
+}
+.stamp.C_ico {
+	background-position: -80px -48px;
+}
+.report.C_ico {
+	background-position: -96px -48px;
+}
+.reportoff.C_ico {
+	background-position: -112px -48px;
+}
+.home.C_ico {
+	background-position: -128px -48px;
+}
+.wallpencil.C_ico {
+	background-position: -144px -48px;
+}
+.database.C_ico {
+	background-position: -160px -48px;
+}
+.cpp11warning.C_ico {
+	background-position: 0px -96px; width: 32px; height: 16px; margin-left: 5px;
+}
+#I_top {
+	background: url("bgv.png") repeat-x 0px 0px rgb(32, 64, 96); height: 64px; color: rgb(255, 255, 255);
+}
+#I_top a:link {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+#I_top a:visited {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+#I_top a:active {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+#I_top a:hover {
+	color: rgb(255, 255, 0);
+}
+#I_header {
+	width: 980px; height: 64px; position: relative;
+}
+#I_logo {
+	width: 245px; height: 64px;
+}
+#I_logo a {
+	background: url("bg.png") no-repeat 0px -128px rgb(32, 64, 96); width: 245px; height: 64px; display: block;
+}
+#I_logo a:hover {
+	background-position: 0px -192px;
+}
+#I_search {
+	left: 250px; top: 8px; padding-left: 5px; font-weight: bold; position: absolute;
+}
+#I_search input {
+	border: 1px inset currentColor; border-image: none; height: 19px; padding-top: 0px; background-color: rgb(176, 192, 208);
+}
+#I_search input.btn {
+	border: 1px outset currentColor; border-image: none; font-size: 10px;
+}
+#I_sponsor {
+	left: 690px; top: 0px; position: absolute;
+}
+#I_sponsor a {
+	width: 120px; height: 40px; display: block; background-image: url("/img/meetingcpp.png");
+}
+#I_sponsor a:hover {
+	background-position: -120px 0px;
+}
+#I_user {
+	top: 0px; right: 0px; position: absolute;
+}
+#I_corner {
+	width: 160px; height: 40px; border-right-color: rgb(64, 92, 128); border-left-color: rgb(16, 32, 48); border-right-width: 1px; border-left-width: 1px; border-right-style: solid; border-left-style: solid;
+}
+#I_cornerinner {
+	background: url("bgv.png") repeat-x 0px 0px rgb(32, 64, 96); width: 158px; height: 40px; border-right-color: rgb(16, 32, 48); border-left-color: rgb(64, 92, 128); border-right-width: 1px; border-left-width: 1px; border-right-style: solid; border-left-style: solid;
+}
+#I_userid {
+	padding: 5px; text-align: right; right: 0px; bottom: 25px; font-size: 9px; position: absolute;
+}
+#I_userid div {
+	clear: right;
+}
+.C_mailnew {
+	background-position: -48px -32px; width: 16px; height: 16px; line-height: 16px; margin-left: 2px; float: right; display: block; background-image: url("bg.png");
+}
+#I_userbuttons {
+	width: 162px; height: 26px; margin-left: 1px;
+}
+#I_userbuttons a {
+	width: 80px; height: 24px; text-align: center; line-height: 20px; font-weight: bold; float: left; display: block;
+}
+#I_userbuttons a {
+	background: url("bg.png") no-repeat 0px -256px rgb(96, 96, 96);
+}
+a#I_btnlogin {
+	background: url("bg.png") no-repeat -82px -256px rgb(16, 144, 48); width: 82px;
+}
+a#I_btnlogout {
+	background: url("bg.png") no-repeat -164px -256px rgb(64, 32, 48); width: 82px;
+}
+#I_fold {
+	background: rgb(255, 255, 255); border: 1px solid black; border-image: none; top: 0px; width: 320px; height: 80px; right: 0px; color: rgb(0, 0, 0); position: absolute; z-index: 1;
+}
+#I_fold .deco {
+	background: url("bg.png") no-repeat 0px -282px rgb(255, 255, 255); width: 16px; height: 64px; float: left;
+}
+#I_fold .fields {
+	text-align: right; line-height: 20px; font-family: tahoma,geneva,sans-serif; font-size: 11px; float: left;
+}
+#I_fold .forgot {
+	line-height: 16px; font-size: 10px;
+}
+#I_fold input.txt {
+	border: 1px inset currentColor; border-image: none; height: 14px; font-size: 12px; background-color: rgb(192, 208, 224);
+}
+#I_fold input.chk {
+	vertical-align: middle;
+}
+#I_fold input.btn {
+	margin: 0px;
+}
+#I_fold .openid {
+	width: 125px; text-align: center; padding-right: 15px; padding-left: 3px; border-left-color: rgb(224, 224, 224); border-left-width: 1px; border-left-style: solid; float: right;
+}
+#I_fold .google {
+	background: url("bg.png") no-repeat -16px -303px rgb(255, 255, 255); margin: 3px auto; width: 64px; height: 21px; display: block;
+}
+#I_fold .yahoo {
+	background: url("bg.png") no-repeat -16px -282px rgb(255, 255, 255); margin: 3px auto; width: 64px; height: 21px; display: block;
+}
+#I_fold .close a {
+	background: url("bg.png") no-repeat -16px -330px rgb(255, 255, 255); top: 0px; width: 16px; height: 16px; right: 0px; position: absolute;
+}
+#I_bar {
+	left: 245px; top: 40px; height: 24px; position: absolute;
+}
+#I_bar ul {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+#I_bar li {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+#I_bar ul {
+	background: url("bg.png") no-repeat right -128px rgb(32, 64, 96); height: 24px; float: left;
+}
+#I_bar li {
+	background: url("bg.png") no-repeat right -168px rgb(32, 64, 96); height: 24px; line-height: 20px; font-weight: bold; float: left; display: block;
+}
+#I_bar li a {
+	background: url("bgv.png") repeat-x 0px -70px rgb(32, 64, 96); padding: 0px 5px; height: 24px; margin-right: 5px; float: left; display: block;
+}
+#I_bar li.here {
+	background: url("bgv.png") repeat-x 0px -70px rgb(32, 64, 96); padding: 0px 5px; height: 24px; margin-right: 5px; float: left; display: block;
+}
+#I_bar li.here {
+	color: silver;
+}
+#I_mid {
+	background: url("bgh.png") repeat-y 0px 0px rgb(255, 255, 255); color: rgb(0, 0, 0);
+}
+#I_wrap {
+	width: 980px;
+}
+#I_minheight {
+	width: 1px; height: 500px; float: right;
+}
+#I_midclear {
+	clear: both;
+}
+#I_nav {
+	width: 234px; text-align: center; font-size: 10px; margin-left: 4px; vertical-align: top; float: left;
+}
+#I_nav .sect {
+	margin-top: 10px; border-right-color: rgb(16, 32, 48); border-left-color: rgb(16, 32, 48); border-right-width: 1px; border-left-width: 1px; border-right-style: solid; border-left-style: solid; background-color: rgb(240, 244, 248);
+}
+#I_nav .sect h3 {
+	top: -1px; border-top-color: rgb(96, 128, 160); border-bottom-color: rgb(16, 32, 48); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; position: relative;
+}
+#I_nav .sect ul {
+	margin: 0px; top: 1px; padding-left: 0px; border-bottom-color: rgb(16, 32, 48); border-bottom-width: 1px; border-bottom-style: solid; position: relative;
+}
+#I_nav .sect ul ul {
+	border: 0px currentColor; border-image: none; top: 0px;
+}
+#I_nav .sect li {
+	line-height: 16px;
+}
+#I_nav h3 {
+	background: url("bgv.png") repeat-x 0px 0px rgb(64, 96, 128); margin: 0px; height: 16px; color: rgb(255, 255, 255); font-size: 12px;
+}
+#I_nav h3 a {
+	color: rgb(255, 255, 255);
+}
+#I_nav h3 a:hover {
+	color: rgb(255, 255, 0); text-decoration: none;
+}
+#I_nav ul {
+	text-align: left; line-height: 14px; font-family: tahoma,geneva,sans-serif; font-size: 11px; list-style-type: none;
+}
+#I_nav li {
+	line-height: 16px; text-indent: 2px; overflow: hidden; display: block;
+}
+#I_nav li.folder {
+	font-weight: bold;
+}
+#I_nav li:hover {
+	overflow: visible;
+}
+#I_nav li a {
+	display: block;
+}
+#I_nav li a span {
+	padding-right: 2px; display: inline-block; cursor: pointer; background-color: rgb(240, 244, 248);
+}
+#I_nav li a:hover {
+	text-decoration: none; background-color: rgb(255, 255, 192);
+}
+#I_nav li a:hover span {
+	text-decoration: none; background-color: rgb(255, 255, 192);
+}
+#I_nav .selected a {
+	background-color: rgb(216, 220, 224);
+}
+#I_nav .selected a span {
+	background-color: rgb(216, 220, 224);
+}
+#I_nav .selected a:hover {
+	background-color: rgb(232, 236, 144);
+}
+#I_nav .selected a:hover span {
+	background-color: rgb(232, 236, 144);
+}
+#I_nav li .label {
+	height: 0px; float: right;
+}
+#I_nav li.cpp11 .label div {
+	background-position: -32px -112px; width: 20px; height: 11px; margin-top: 2px; background-image: url("bg.png"); background-repeat: no-repeat;
+}
+#I_nav li.cpp98 .label div {
+	background-image: none;
+}
+.C_cpp11 {
+	background-position: -32px -112px; margin: 0px; padding: 0px; width: 20px; height: 11px; display: inline-block; background-image: url("bg.png"); background-repeat: no-repeat;
+}
+#I_nav h4 {
+	margin: 0px; font-size: 11px; font-style: italic; font-weight: bold;
+}
+* html #I_nav li {
+	width: 232px;
+}
+.C_BoxSort .toggle_off {
+	background-position: -32px -96px; width: 16px; height: 16px; float: right; background-image: url("bg.png");
+}
+.C_BoxSort .toggle_on {
+	background-position: -48px -96px; width: 16px; height: 16px; float: right; background-image: url("bg.png");
+}
+.C_Collapsable .mid {
+	background: url("bg.png") -96px -96px; width: 16px; height: 16px; float: left;
+}
+.C_Collapsable .last {
+	background: url("bg.png") -96px -96px; width: 16px; height: 16px; float: left;
+}
+.C_Collapsable .pl {
+	background: url("bg.png") -96px -96px; width: 16px; height: 16px; float: left;
+}
+.C_Collapsable .mn {
+	background: url("bg.png") -96px -96px; width: 16px; height: 16px; float: left;
+}
+.C_Collapsable .last {
+	background-position: -112px -96px;
+}
+.C_Collapsable .mn {
+	background-position: -64px -96px; cursor: pointer;
+}
+.C_Collapsable .pl {
+	background-position: -80px -96px; cursor: pointer;
+}
+* html .C_Collapsable .mid {
+	display: inline;
+}
+* html .C_Collapsable .last {
+	display: inline;
+}
+* html .C_Collapsable .pl {
+	display: inline;
+}
+* html .C_Collapsable .mn {
+	display: inline;
+}
+.C_Collapsable ul.nop {
+	display: none;
+}
+.C_Collapsable ul.yep {
+	display: block;
+}
+#I_main {
+	width: 728px; vertical-align: top; float: right; background-color: rgb(255, 255, 255);
+}
+#I_content {
+	margin: 10px 0px;
+}
+.XXXC_ad728 {
+	margin: 10px 0px;
+}
+.C_support {
+	margin-top: 10px;
+}
+.C_DonateBox {
+	width: 728px; height: 90px; margin-right: -728px; float: left;
+}
+.C_ad728 {
+	float: left;
+}
+.C_supportbottom {
+	clear: both;
+}
+.C_ad234 {
+	margin: 10px 0px;
+}
+#I_bottom {
+	background: rgb(215, 215, 215); border-top-color: rgb(16, 32, 48); border-top-width: 1px; border-top-style: solid;
+}
+#I_footer {
+	width: 980px; text-align: center; padding-bottom: 10px; font-size: 9px;
+}
+table.boxed {
+	border-collapse: collapse;
+}
+table.boxed th {
+	background: rgb(224, 224, 224); border: 1px solid black; border-image: none;
+}
+table.boxed td {
+	border: 1px solid black; border-image: none;
+}
+.C_doc #I_type {
+	margin-top: 5px;
+}
+.C_doc h1 {
+	margin: 0px; height: 30px; font-size: 21px; border-bottom-color: rgb(32, 64, 128); border-bottom-width: 2px; border-bottom-style: solid;
+}
+.C_doc h1 .namespace {
+	color: rgb(80, 80, 160); font-size: 12px;
+}
+.C_doc #I_file {
+	text-align: right; font-family: monospace; float: right; position: relative; max-width: 500px;
+}
+.C_doc .C_prototype {
+	background: rgb(250, 255, 250); color: rgb(0, 128, 0);
+}
+.C_doc .C_prototype .even {
+	background: rgb(242, 255, 242);
+}
+.C_doc .C_prototype table {
+	width: 100%; border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none; border-collapse: collapse;
+}
+.C_doc .C_prototype tr {
+	border-bottom-color: rgb(240, 240, 240); border-bottom-width: 1px; border-bottom-style: dashed;
+}
+.C_doc .C_prototype th {
+	text-align: right; color: rgb(160, 208, 160); font-style: italic; font-weight: normal;
+}
+.C_doc .C_prototype td {
+	color: rgb(0, 128, 0); padding-left: 12px;
+}
+.C_doc #I_description {
+	margin: 5px 0px; font-size: 12px; font-weight: bold;
+}
+.C_doc .links {
+	margin: 3px; width: 100%; clear: both;
+}
+.C_doc dl.links {
+	border: 1px solid silver; border-image: none; background-color: rgb(240, 240, 240);
+}
+.C_doc .links dt {
+	padding: 1px 3px; float: left; background-color: rgb(240, 240, 240);
+}
+.C_doc .links dd {
+	padding: 1px 3px; margin-left: 165px; border-left-color: silver; border-left-width: 1px; border-left-style: solid; background-color: rgb(255, 255, 255);
+}
+.C_doc .links .typ {
+	color: green; font-size: 11px;
+}
+.C_doc table.hierarchy div {
+	border: 1px solid black; border-image: none; width: 100px; height: 24px; text-align: center; padding-top: 8px;
+}
+.C_doc h3 {
+	margin-bottom: 5px; border-bottom-color: navy; border-bottom-width: 1px; border-bottom-style: solid;
+}
+.C_doc section h3::before {
+	width: 16px; height: 16px; font-size: 0px; margin-right: 5px; float: left; display: block; content: "";
+}
+.C_doc section h3::before {
+	background: url("bg.png") no-repeat 0px 0px rgb(255, 255, 255);
+}
+.C_doc section#parameters h3::before {
+	background-position: -16px 0px;
+}
+.C_doc section#return h3::before {
+	background-position: -32px 0px;
+}
+.C_doc section#example h3::before {
+	background-position: -48px 0px;
+}
+.C_doc section#complexity h3::before {
+	background-position: -64px 0px;
+}
+.C_doc section#validity h3::before {
+	background-position: -80px 0px;
+}
+.C_doc section#see h3::before {
+	background-position: -96px 0px;
+}
+.C_doc section#properties h3::before {
+	background-position: -112px 0px;
+}
+.C_doc section#types h3::before {
+	background-position: -128px 0px;
+}
+.C_doc section#functions h3::before {
+	background-position: -144px 0px;
+}
+.C_doc section#classes h3::before {
+	background-position: -160px 0px;
+}
+.C_doc section#constants h3::before {
+	background-position: -176px 0px;
+}
+.C_doc SECIION#instantiations h3::before {
+	background-position: -192px 0px;
+}
+.C_doc section#macros h3::before {
+	background-position: -208px 0px;
+}
+.C_doc h4 {
+	font-size: 12px; font-weight: bold; margin-top: 0px; margin-bottom: 5px;
+}
+.C_doc #description dt {
+	font-style: italic; font-weight: bold; margin-top: 5px;
+}
+.C_doc #properties dt {
+	font-style: italic; font-weight: bold; margin-top: 5px;
+}
+.C_doc #parameters dt {
+	font-family: monospace; margin-top: 5px; background-color: rgb(240, 240, 240);
+}
+.C_doc #requirements dt {
+	font-family: monospace; margin-top: 5px; background-color: rgb(240, 240, 240);
+}
+.C_doc #parameters dd {
+	margin-bottom: 10px;
+}
+.C_doc #requirements dd {
+	margin-bottom: 10px;
+}
+.C_art {
+	width: 100%; margin-top: 10px;
+}
+.C_art #I_author {
+	text-align: right;
+}
+.C_art #I_date {
+	text-align: right; font-size: 10px;
+}
+.C_art h1 {
+	margin: 0px; width: 100%; line-height: 30px; font-size: 21px; border-bottom-color: rgb(32, 64, 128); border-bottom-width: 2px; border-bottom-style: solid;
+}
+.C_art #I_score {
+	line-height: 16px; font-size: 10px; float: right;
+}
+.C_art #I_stars {
+	margin-right: 5px; float: right;
+}
+.C_art #I_description {
+	margin: 5px 0px; font-size: 12px; font-weight: bold;
+}
+.C_art #I_content {
+	clear: both;
+}
+.C_art h3 {
+	margin-bottom: 5px; border-bottom-color: navy; border-bottom-width: 1px; border-bottom-style: solid;
+}
+table.C_artlist {
+	width: 100%;
+}
+.C_artList tr:hover td {
+	background: rgb(247, 247, 255);
+}
+.C_artList th {
+	background: rgb(176, 192, 208);
+}
+.CH_artList th img {
+	vertical-align: middle;
+}
+.C_artList td {
+	border: 1px solid rgb(0, 0, 0); border-image: none;
+}
+.C_artList .title {
+	font-weight: bold;
+}
+.C_artList .cat {
+	font-size: 9px;
+}
+.C_artList .author {
+	float: right;
+}
+.C_artList .date {
+	width: 150px; text-align: center;
+}
+.C_artList .date .updated {
+	font-size: 9px;
+}
+.C_artList .votes {
+	width: 110px; text-align: center; font-size: 10px;
+}
+.C_artList .status {
+	text-align: center;
+}
+.C_artList .elem img {
+	border: 1px solid rgb(0, 0, 0); border-image: none; float: left;
+}
+.C_artLabels {
+	width: 728px;
+}
+.C_artLabels td {
+	border: 1px solid silver; border-image: none; left: 2%; position: relative;
+}
+.C_artLabels .tit {
+	font-weight: bold;
+}
+.C_Score {
+	margin: 3px auto; border: 1px solid black; border-image: none; width: 250px;
+}
+.C_Score .top {
+	background: rgb(128, 128, 160); margin: auto; padding: 2px; text-align: center; color: rgb(255, 255, 255); font-weight: bold;
+}
+.C_Score .bot {
+	text-align: center;
+}
+.C_Score .vote {
+	margin: 3px auto; width: 180px; text-align: center; font-size: 9px;
+}
+.C_forMonths {
+	width: 728px; text-align: right;
+}
+.C_forThread .box {
+	margin: 2px; border: 1px solid gray; border-image: none; width: 728px; border-collapse: collapse;
+}
+.C_forThread .participated {
+	background-color: rgb(240, 240, 255);
+}
+.C_forThread .top .C_ico {
+	margin: 0px 2px; vertical-align: middle;
+}
+.C_forThread .thright {
+	float: right;
+}
+.C_forThread .cont {
+	padding-left: 5px; font-size: xx-small;
+}
+.C_forThread .bot {
+	padding: 0px; color: rgb(112, 112, 112); font-size: xx-small; background-color: rgb(247, 247, 255);
+}
+.C_forThread .bot a {
+	color: rgb(112, 112, 112);
+}
+.C_forThread .bot .auth {
+	color: rgb(0, 0, 112);
+}
+.C_forThread .pages {
+	font-size: 10px;
+}
+.C_forThread .status {
+	color: white; line-height: 10px; font-size: 9px; background-color: gray;
+}
+.C_forThread .status a:link {
+	color: white; text-decoration: none;
+}
+.C_forThread .status a:visited {
+	color: white; text-decoration: none;
+}
+.C_forThread .status a:active {
+	color: white; text-decoration: none;
+}
+.C_forThread .status a:hover {
+	color: yellow;
+}
+.C_forPost .box {
+	background: rgb(255, 255, 255); margin: 5px; padding: 0px; border: 1px solid gray; border-image: none; width: 716px;
+}
+.C_forPost .boxtop {
+	height: 20px; border-bottom-color: silver; border-bottom-width: 1px; border-bottom-style: dashed; background-color: rgb(240, 240, 255);
+}
+.C_forPost .dwhen {
+	padding: 3px; font-size: 10px; float: right;
+}
+.C_forPost .dwho {
+	padding: 3px; font-size: 10px;
+}
+.C_forPost .dwhat {
+	padding: 5px;
+}
+.C_forPost .dwhat .quote th.qh {
+	text-align: left; font-size: 9px; font-style: italic; font-weight: normal;
+}
+.C_forPost .dwhat .quote td.qd {
+	background: rgb(239, 239, 239); border: 1px dotted silver; border-image: none;
+}
+.C_forPost .dhow {
+	padding: 3px; height: 20px; text-align: right;
+}
+.C_forPost .sedited {
+	font-size: 10px; font-style: italic;
+}
+.C_forPost .reported {
+	background: rgb(255, 250, 247); border: 1px solid rgb(160, 160, 160); border-image: none;
+}
+.C_forPost .box .reported {
+	background: rgb(255, 250, 247); border: 1px solid rgb(160, 160, 160); border-image: none;
+}
+.C_forPost .reported .rtop {
+	background-color: rgb(240, 240, 240);
+}
+.C_forPost .box .reported .rtop {
+	background-color: rgb(240, 240, 240);
+}
+.C_schres {
+	width: 640px; font-family: arial,sans-serif; margin-top: 20px;
+}
+.C_schres .title {
+	font-size: 16px; text-decoration: underline;
+}
+.C_schres .sub {
+	font-size: 10px;
+}
+.C_schres .url {
+	color: rgb(0, 112, 0);
+}
+.C_schres .bot {
+	background: rgb(255, 255, 208); text-align: right; border-top-color: rgb(160, 160, 160); border-top-width: 1px; border-top-style: dashed;
+}
+.C_bigletters {
+	text-align: center;
+}
+.C_bigletters strong {
+	font-size: 16px;
+}
+.C_usrPM .box {
+	background: rgb(247, 247, 247); margin: 5px; padding: 3px; border: 1px solid gray; border-image: none; width: 716px; border-collapse: collapse;
+}
+.C_usrPM .rtop {
+	height: 20px; border-bottom-color: silver; border-bottom-width: 1px; border-bottom-style: dashed; background-color: rgb(240, 240, 255);
+}
+.C_usrPM .dwho {
+	font-size: 10px;
+}
+.C_usrPM .dwhen {
+	text-align: right; font-size: 10px;
+}
+.C_usrPM .dwhat {
+	padding: 5px;
+}
+.C_usrPM .dwhat .quote th.qh {
+	text-align: left; font-size: 9px; font-style: italic; font-weight: normal;
+}
+.C_usrPM .dwhat .quote td.qd {
+	background: rgb(239, 239, 239); border: 1px dotted silver; border-image: none;
+}
+.C_pages a {
+	background: rgb(208, 208, 240); margin: 2px; padding: 3px; border: 1px solid rgb(0, 0, 0); border-image: none; color: black;
+}
+.C_pages span {
+	background: rgb(208, 208, 240); margin: 2px; padding: 3px; border: 1px solid rgb(0, 0, 0); border-image: none; color: black;
+}
+.C_pages a {
+	background: rgb(240, 240, 240);
+}
+.CH_pages a:link {
+	color: black;
+}
+.CH_pages a:visited {
+	color: black;
+}
+.CH_pages a:active {
+	color: black;
+}
+.CH_pages a:hover {
+	background: yellow; text-decoration: none;
+}
+.C_pages {
+	background: url("bgv.png") repeat-x 0px 0px rgb(32, 64, 96); margin: 5px; padding: 1px; width: 718px; color: white; font-weight: bold;
+}
+.C_doc #characteristics h3::before {
+	background: url("bg.png") no-repeat -112px 0px rgb(255, 255, 255);
+}
+.C_docPrevNext {
+	width: 100%; margin-top: 12px; border-top-color: navy; border-top-width: 2px; border-top-style: solid;
+}
+.C_docPrevNext .prev {
+	width: 49%; text-align: right;
+}
+.C_docPrevNext .prev img {
+	float: right;
+}
+.C_docPrevNext .index {
+	text-align: center;
+}
+.C_docPrevNext .next {
+	width: 49%;
+}
+.C_docPrevNext .next img {
+	float: left;
+}
+.auto .split {
+	width: 100%;
+}
+.auto .split .source {
+	width: 50%;
+}
+.auto .split .output {
+	width: 50%;
+}
+.auto .rownum {
+	text-align: right; color: rgb(160, 160, 160); vertical-align: top; min-width: 20px;
+}
+.auto .source {
+	background: rgb(239, 239, 255); border: 1px solid rgb(192, 192, 208); border-image: none; vertical-align: top;
+}
+.auto .source var {
+	color: rgb(0, 0, 176); font-style: normal;
+}
+.auto .source dfn {
+	color: rgb(80, 0, 112); font-style: normal;
+}
+.auto .source cite {
+	color: rgb(0, 112, 0); font-style: normal;
+}
+.auto .source kbd {
+	color: rgb(96, 0, 48); font-style: normal;
+}
+.auto .source .selectline {
+	background: rgb(192, 192, 224);
+}
+.auto .output {
+	background: rgb(231, 231, 231); border: 1px solid silver; border-image: none; vertical-align: top;
+}
+.C_warning {
+	background: rgb(255, 224, 224); margin: 3px; padding: 3px; border: 1px solid rgb(128, 112, 112); border-image: none; width: 95%; text-align: left;
+}
+.C_warning .title {
+	font-weight: bold;
+}
+.C_message {
+	background: white; margin: 1.12em 0px; border: 1px solid black; border-image: none; width: 728px;
+}
+.C_message .mhead {
+	text-align: center; font-weight: bold;
+}
+.C_message .mbody {
+	margin: 3px;
+}
+.C_message .mfoot {
+	text-align: center;
+}
+.C_btn {
+	width: 92px; height: 21px; text-align: center; line-height: 23px; font-size: 9px; font-weight: bold; display: inline-block; background-image: url("bg.png"); background-repeat: no-repeat;
+}
+.C_btn {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+a.C_btn {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+a.C_btn:visited {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+a.C_btn:hover {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+a.C_btn:active {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+a.C_btn:active {
+	left: 1px; top: 1px; position: relative;
+}
+a.C_btn {
+	background-position: -164px -282px;
+}
+a.C_btn:hover {
+	background-position: -164px -303px; color: rgb(255, 255, 0);
+}
+span.C_btn {
+	background-position: -164px -324px;
+}
+a.narrow.C_btn {
+	background-position: -92px -282px; width: 72px; height: 21px;
+}
+a.narrow.C_btn:hover {
+	background-position: -92px -303px;
+}
+span.narrow.C_btn {
+	background-position: -92px -324px; width: 72px; height: 21px;
+}
+.C_btn .C_ico {
+	float: left;
+}
+.NOC_btn .C_ico {
+	left: -5px; top: -3px; float: left; position: relative;
+}
+.C_btnholder {
+	padding: 0px; vertical-align: top;
+}
+.C_shell {
+	left: -2px; top: 0px; height: 100%; float: right; position: relative;
+}
+.C_shell .inner {
+	left: 0px; top: 0px; width: 200px; position: absolute;
+}
+.C_shell .inner .btn {
+	border: 1px solid rgb(192, 192, 208); border-image: none; width: 16px; height: 16px; overflow: hidden;
+}
+.C_shell .inner .btn a:hover {
+	color: rgb(0, 0, 160); text-decoration: none;
+}
+.C_shell .inner .btn {
+	border-top-right-radius: 3px; border-bottom-right-radius: 3px;
+}
+.C_SwitchCases div {
+	padding: 2px; border: 1px solid gray; border-image: none;
+}
+.C_SwitchCases div div {
+	padding: 0px; border: 0px currentColor; border-image: none;
+}
+.C_SwitchCases div.off {
+	display: none;
+}
+.C_SwitchCases div.on {
+	display: block;
+}
+.C_SwitchCases ul {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+.C_SwitchCase li {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+.C_SwitchCases ul {
+	height: 24px;
+}
+.C_SwitchCases li {
+	border: 1px solid gray; border-image: none; top: 1px; height: 22px; line-height: 20px; margin-right: 5px; float: left; display: block; position: relative; z-index: 1;
+}
+.C_SwitchCases li.on {
+	border-bottom-color: rgb(240, 240, 240); border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(255, 255, 255);
+}
+.C_SwitchCases li.off {
+	border-bottom-color: gray; border-bottom-width: 1px; border-bottom-style: solid; background-color: rgb(240, 240, 240);
+}
+.C_SwitchCases li.text {
+	border: 0px currentColor; border-image: none; font-size: 10px;
+}
+.C_SwitchCases li.hide {
+	border: 0px currentColor; border-image: none; font-size: 10px; font-style: italic;
+}
+.C_SwitchCases li a {
+	padding: 0px 3px; height: 22px; float: left; display: block;
+}
+.C_SwitchCases li {
+	border-top-left-radius: 3px; border-top-right-radius: 3px;
+}
+.C_SwitchCases div.on {
+	border-top-right-radius: 3px;
+}
+.C_deco {
+	border: 1px solid rgb(16, 32, 48); border-image: none; width: 728px; margin-top: 5px;
+}
+.C_deco th {
+	background: url("bgv.png") repeat-x 0px 0px rgb(64, 96, 128); border: 1px solid rgb(16, 32, 48); border-image: none; color: rgb(255, 255, 255);
+}
+.C_deco th a:link {
+	color: rgb(255, 255, 255);
+}
+.C_deco th a:visited {
+	color: rgb(255, 255, 255);
+}
+.C_deco th a:active {
+	color: rgb(255, 255, 255);
+}
+.C_deco th a:hover {
+	color: rgb(255, 255, 0);
+}
+.C_deco tr td {
+	background: rgb(240, 244, 255); border: 1px solid rgb(112, 128, 144); border-image: none;
+}
+.C_deco tr.odd td {
+	background: rgb(224, 232, 248);
+}
+.C_deco tr td td {
+	border: 0px currentColor; border-image: none;
+}
+.C_deco tr.separator td {
+	background: white; font-weight: bold;
+}
+.C_deco .field {
+	text-align: right; font-weight: bold;
+}
+.C_deco .value {
+	font-family: courier,monospace;
+}
+.C_deco textarea {
+	font-family: courier,monospace;
+}
+.C_deco .description {
+	font-size: 10px;
+}
+.C_deco .number {
+	text-align: center;
+}
+.C_deco .txt {
+	border: 1px solid black; border-image: none; background-color: rgb(255, 255, 240);
+}
+.C_deco select {
+	border: 1px solid black; border-image: none; background-color: rgb(255, 255, 240);
+}
+.C_deco textarea {
+	border: 1px solid black; border-image: none; background-color: rgb(255, 255, 240);
+}
+.C_deco .buttons {
+	padding: 5px; text-align: center;
+}
+.C_doc .hierarchy ul {
+	margin: 0px; padding: 0px; display: block; list-style-type: none;
+}
+.C_doc ul.hierarchy {
+	margin: 0px; padding: 0px; display: block; list-style-type: none;
+}
+.C_doc .hierarchy li {
+	margin: 0px; padding: 0px; float: left; display: block; list-style-type: none;
+}
+.C_doc .hierarchy li b {
+	border: 1px solid black; border-image: none; height: 24px; text-align: center; padding-top: 8px; margin-top: 3px; margin-left: 42px; display: block; min-width: 100px;
+}
+* html .C_doc .hierarchy li b {
+	width: 100px;
+}
+.C_doc .hierarchy li b.half {
+	margin-top: 23px;
+}
+.C_doc .hierarchy li b::before {
+	background-position: -64px -112px; width: 42px; height: 7px; margin-top: 3px; margin-left: -42px; float: left; display: block; content: ""; background-image: url("bg.png"); background-repeat: no-repeat;
+}
+.C_doc .hierarchy li:first-child b::before {
+	width: 0px;
+}
+.C_doc .hierarchy li:first-child b {
+	margin-left: 0px;
+}
+.C_doc .hierarchy::after {
+	clear: both; display: table; content: "";
+}
+.C_doc .hierarchy {
+	-ms-zoom: 1;
+}
+#I_bar {
+	left: 245px; top: 40px; height: 24px; position: absolute;
+}
+#I_bar ul {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+#I_bar li {
+	margin: 0px; padding: 0px; list-style-type: none;
+}
+#I_bar ul {
+	background: url("bg.png") no-repeat right -128px rgb(32, 64, 96); height: 24px; float: left;
+}
+#I_bar li {
+	background: url("bg.png") no-repeat right -168px rgb(32, 64, 96); height: 24px; line-height: 20px; font-weight: bold; float: left; display: block;
+}
+#I_bar li a {
+	background: url("bgv.png") repeat-x 0px -70px rgb(32, 64, 96); padding: 0px 5px; height: 24px; margin-right: 5px; float: left; display: block;
+}
+#I_bar li.here {
+	background: url("bgv.png") repeat-x 0px -70px rgb(32, 64, 96); padding: 0px 5px; height: 24px; margin-right: 5px; float: left; display: block;
+}
+#I_bar li.here {
+	color: silver;
+}
+.center {
+	text-align: center;
+}
+.centertext {
+	text-align: center;
+}
+.right {
+	text-align: right;
+}
+.floatleft {
+	float: left;
+}
+.floatright {
+	float: right;
+}
+.u {
+	text-decoration: underline;
+}
+.centerblock {
+	margin-right: auto; margin-left: auto;
+}
+.wideblock {
+	width: 80%;
+}
+.sixteen {
+	background: url("/ico/treevline.png") repeat-y; margin: 0px; padding: 0px; width: 16px; vertical-align: top;
+}
+.nospace {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none;
+}
+.nospace table {
+	margin: 0px; padding: 0px; border-collapse: collapse;
+}
+table.boxed {
+	border-collapse: collapse;
+}
+table.boxed th {
+	background: rgb(240, 240, 240); border: 1px solid black; border-image: none;
+}
+table.boxed td {
+	background: rgb(255, 255, 255); border: 1px solid black; border-image: none;
+}
+table.boxed .yes {
+	background-color: rgb(208, 224, 208);
+}
+table.boxed tr.cpp11 td {
+	background-color: rgb(255, 255, 224);
+}
+table.containers.boxed th.cpp98 {
+	background-color: rgb(215, 215, 224);
+}
+table.containers.boxed th.cpp11 {
+	background-color: rgb(224, 224, 192);
+}
+table.containers.boxed td.cpp98 {
+	background-color: rgb(247, 247, 255);
+}
+table.containers.boxed td.cpp11 {
+	background-color: rgb(255, 255, 224);
+}
+table.containers.boxed td.none {
+	background-color: silver;
+}
+.containers b {
+	margin: 0px; padding: 0px; width: 16px; height: 16px; line-height: 16px; vertical-align: middle; display: inline-block; background-image: url("bg.png"); background-repeat: no-repeat;
+}
+.containers b.o1 {
+	background-position: -208px -64px;
+}
+.containers b.olog {
+	background-position: -224px -64px;
+}
+.containers b.on {
+	background-position: -240px -64px;
+}
+.effect_height {
+	transition:height 0.5s; overflow: hidden; -moz-transition: height .5s ease; -o-transition: height .5s ease; -webkit-transition: height .5s;
+}
+.trans_half {
+	transition:0.5s; overflow: hidden; -moz-transition: all .5s ease; -o-transition: all .5s ease; -webkit-transition: all .5s;
+}

@@ -1,0 +1,20 @@
+
+该工具依赖开源库libpcap和libnids：
+
+正常情况下，如无特殊需要，不需执行第1步和第2步。
+
+1. 从https://github.com/the-tcpdump-group/libpcap/tree/master下载libpcap源码, 编译生成静态库libpcap.a，拷到rtp_parser/lib目录。
+	a. 执行./configure， 如果依赖库不存在，请根据提示下载安装对应的依赖组件
+	b. 执行make，生成libpcap.a
+	c. 将libpcap.a拷到rtp_parser/lib目录。
+
+2. 进入文件夹libnids-patch，编译libnids，该库经过简单的修改，文件夹libnids-patch是个git工程，可以查看相关修改内容：
+	a. 执行下面命令生成makefile:
+		./configure --with-libpcap= ../libpcap --enable-tcpreasm  --disable-libglib --disable-libnet
+		 --enable-tcpreasm选项是允许跟踪不完整的tcp连接，使能了这个选项，即使抓包文件中没有tcp连接的三次握手过程，也跟踪这条tcp数据流。
+	b. 执行make，生成libnids.a.
+	c. 将libnids.a拷到rtp_parser/lib目录。
+	
+3. 进入文件夹rtp_parser，编译可执行文件rtp_parser：
+	a. 执行make即可在bin目录下生成可执行文件rtp_parser。
+	b. 在bin目录下执行./rtp_parser rtsp.pcap(rtsp.pcap为抓包文件)即可生成解析文件

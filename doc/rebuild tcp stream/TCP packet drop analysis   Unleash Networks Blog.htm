@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://www.unleashnetworks.com/blog/?p=437 -->
+<html lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>TCP packet drop analysis | Unleash Networks Blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" type="text/css" media="all" href="./TCP packet drop analysis   Unleash Networks Blog_files/style.css">
+<link rel="pingback" href="http://www.unleashnetworks.com/blog/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://www.unleashnetworks.com/blog/wp-content/themes/twentyeleven/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="Unleash Networks Blog » Feed" href="http://www.unleashnetworks.com/blog/?feed=rss2">
+<link rel="alternate" type="application/rss+xml" title="Unleash Networks Blog » Comments Feed" href="http://www.unleashnetworks.com/blog/?feed=comments-rss2">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.unleashnetworks.com/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.unleashnetworks.com/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Trisul packages now available for Ubuntu 11.10 64-bit" href="http://www.unleashnetworks.com/blog/?p=431">
+<link rel="next" title="Trisul PDF generation on CentOS 6.x needs MS True Type" href="http://www.unleashnetworks.com/blog/?p=450">
+<meta name="generator" content="WordPress 3.9.1">
+<link rel="canonical" href="./TCP packet drop analysis   Unleash Networks Blog_files/TCP packet drop analysis   Unleash Networks Blog.htm">
+<link rel="shortlink" href="./TCP packet drop analysis   Unleash Networks Blog_files/TCP packet drop analysis   Unleash Networks Blog.htm">
+
+<link rel="stylesheet" href="./TCP packet drop analysis   Unleash Networks Blog_files/wp-syntax.css" type="text/css" media="screen">
+<style type="text/css"></style><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+
+<body class="single single-post postid-437 single-format-standard singular two-column right-sidebar">
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<h1 id="site-title"><span><a href="http://www.unleashnetworks.com/blog/" title="Unleash Networks Blog" rel="home">Unleash Networks Blog</a></span></h1>
+				<h2 id="site-description">Thoughts on Network and Security Monitoring</h2>
+			</hgroup>
+
+			
+								<form method="get" id="searchform" action="http://www.unleashnetworks.com/blog/">
+		<label for="s" class="assistive-text">Search</label>
+		<input type="text" class="field" name="s" id="s" placeholder="Search">
+		<input type="submit" class="submit" name="submit" id="searchsubmit" value="Search">
+	</form>
+			
+			<nav id="access" role="navigation">
+				<h3 class="assistive-text">Main menu</h3>
+								<div class="skip-link"><a class="assistive-text" href="http://www.unleashnetworks.com/blog/?p=437#content" title="Skip to primary content">Skip to primary content</a></div>
+				<div class="skip-link"><a class="assistive-text" href="http://www.unleashnetworks.com/blog/?p=437#secondary" title="Skip to secondary content">Skip to secondary content</a></div>
+								<div class="menu"><ul><li><a href="http://www.unleashnetworks.com/blog/">Home</a></li><li class="page_item page-item-2"><a href="http://www.unleashnetworks.com/blog/?page_id=2">About</a></li></ul></div>
+			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a href="http://www.unleashnetworks.com/blog/?p=431" rel="prev"><span class="meta-nav">←</span> Previous</a></span>
+						<span class="nav-next"><a href="http://www.unleashnetworks.com/blog/?p=450" rel="next">Next <span class="meta-nav">→</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-437" class="post-437 post type-post status-publish format-standard hentry category-uncategorized">
+	<header class="entry-header">
+		<h1 class="entry-title">TCP packet drop analysis</h1>
+
+				<div class="entry-meta">
+			<span class="sep">Posted on </span><a href="./TCP packet drop analysis   Unleash Networks Blog_files/TCP packet drop analysis   Unleash Networks Blog.htm" title="7:38 am" rel="bookmark"><time class="entry-date" datetime="2012-03-13T07:38:23+00:00" pubdate="">March 13, 2012</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="http://www.unleashnetworks.com/blog/?author=2" title="View all posts by Vivek Rajagopalan" rel="author">Vivek Rajagopalan</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>I got to read this comprehensive blog post by Charles Smutz today titled “<a href="http://smusec.blogspot.in/2012/03/flushing-out-leaky-taps-v2.html">Flushing out leaky taps 2</a>” ; Like others working on products that do reconstruction we too have wrangled with this issue. Here is my take on this along with a small plug towards the end.</p>
+<p>How good can an analyzer get in detecting network vs probe packet loss when deployed in a single observation point ?</p>
+<ul>
+<li><strong><span style="color: #0000ff">Estimate</span> packet loss on network</strong> : It is well known that it is hard to pin point which TCP packets were lost in the network. In the forward path you can look at retransmissions and make a guess. But you cant say all retransmitted packets were originally lost due to a late ACK or a retransmission timeout. The reverse path is even more hairy due to the use of delayed ACKs. All this means is that you can only make a rough guess of network packet loss.</li>
+</ul>
+<ul>
+<li><strong><span style="color: #ff0000">Measure</span> holes caused by the capture toolchain</strong> : Say a TCP session completed successfully with both sides ACKing the total payload size sent by the other side. Now irrespective of network packet loss your analyzer ought to have the complete payloads from both ends.&nbsp; If you reconstructed the TCP session and find <em>holes, </em>it is squarely the analyzers fault irrespective of the lossiness of the network. You can measure this accurately.</li>
+</ul>
+<h2>Analyzers can scramble the order</h2>
+<p>Frankly I have never found the “Lost Segment” flag in Wireshark to be very useful because it appears to flag <strong>all</strong> out of order segments which could be solely due to the components in capture stack shuffling the order around.&nbsp; This is all too common especially if you are hanging off a SPAN port, bonding two interfaces,&nbsp; or use an aggregating TAP sufficiently close to an endpoint.</p>
+<p>Say you had a PCAP in which the remote side ACK-ed upto 1000 <strong>followed</strong> by the near side sending 1000 for the first time – this is clearly fishy. It is obviously inconceivable that the remote side would ACK 1000 which it never received up until that timestamp in your trace.&nbsp; Some questions pop to mind.</p>
+<ul>
+<li>Was the packet with sequence 1000 dropped by the network&nbsp; before it reached your analyzers observation point ?</li>
+<li>Did it make it to your observation point, but your capture stack could not reliably deliver it from the observation point to your application ?</li>
+</ul>
+<p>In several captures, I have seen it is neither of these – if you just waited a little longer you would see the packet. The SPAN port, the adapter, the driver, the library, or even your code are simply not presenting the two uni-directional streams in perfect synchronized order.</p>
+<p>Applications that reassemble need not be anything like a typical TCP endpoint. For starters&nbsp; it can afford to have an really enormous window and focus purely on “hole filling” completely ignoring the ACKs.&nbsp; If after the termination of a TCP flow, either by virtue of seeing a FIN/RST or a timeout,&nbsp; holes still remain it is purely the fault of the capture stack. Of course baking the hole detection inside your application is debatable because it entails&nbsp; more stateful tracking of each TCP connection..</p>
+<p>If you are looking for another tool to add to your armory – read on for a small plug.</p>
+<h2>TCP Analysis with Unsniff</h2>
+<p>Unsniff has a TCP Congestion Analysis feature that can help here. This could be a useful addition to tshark. You can right click on any TCP Flow and select “TCP Congestion Analyzer”&nbsp; which would then run the all the normal analysis tasks like sequence number, window, inflight data, bandwidth, etc. It also tries to estimate the cwnd (the best it can given the constraints of a single observation point mentioned earlier).&nbsp; The two other things it can do are relevant to this blog post.</p>
+<ol>
+<li>A packet by packet analysis (like Wireshark) which points out out of order, dup acks,&nbsp; and retransmissions.</li>
+<li>A hole analysis which points out which segments definitely did not make it to the analyzer even though they went across the network..</li>
+</ol>
+<h2>How to use</h2>
+<p>1. First download and install <a href="http://www.unleashnetworks.com/downloads.html">Unsniff Network Analyzer from here</a>. It is a free download and works on all Windows platforms.</p>
+<p>2. Import your capture file via File &gt; Import &gt; TCPDUMP&nbsp; – You can use the capture files in this <a href="https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=6081">wireshark bug report</a></p>
+<p>3. Once loaded you want to focus on these three tabs</p>
+<ol>
+<li><strong>Packets</strong> – all link layer packets</li>
+<li><strong>Sessions</strong> – a list of TCP flows, right click any of them to access the TCP Analyzer</li>
+<li><strong>User Objects</strong> – a list of user objects (files/images/etc) that are a result of reassembling content. If payload holes are present reassembly will fail, sometimes spectacularly when the content is streamed as in “gzip/chunked”</li>
+</ol>
+<p>4. Switch the <em>Sessions</em> tab &gt; right click on any flow &gt; select <em>TCP Congestion Analyzer</em></p>
+<div id="attachment_441" style="width: 530px" class="wp-caption alignnone"><img class="size-full wp-image-441" src="./TCP packet drop analysis   Unleash Networks Blog_files/pl1.jpg" alt="" width="520" height="283"><p class="wp-caption-text">RIghty click to access flow menu</p></div>
+<p>5. Within the congestion analyzer the <em>Overview</em> tab contains an item called <em>Definitely Lost Segments</em> for both directions. This contains a count of the number of <strong>holes</strong>&nbsp; found. The analyzer is responsible for this.</p>
+<div id="attachment_443" style="width: 534px" class="wp-caption alignnone"><img class="size-full wp-image-443" src="./TCP packet drop analysis   Unleash Networks Blog_files/pl3.jpg" alt="" width="524" height="273"><p class="wp-caption-text">Count of segments lost in either direction by analyzer</p></div>
+<p>6. Switch over to the <em>Segment Wise</em>&nbsp; tab and scroll all the way to the bottom for a list of actual holes found.</p>
+<div id="attachment_442" style="width: 644px" class="wp-caption alignnone"><img class="size-full wp-image-442" src="./TCP packet drop analysis   Unleash Networks Blog_files/pl2.jpg" alt="List of holes and size of each hole" width="634" height="185"><p class="wp-caption-text">List of holes and size of each hole</p></div>
+<p>&nbsp;</p>
+<p>7. If no holes were found, the <em>User Objects</em> tab would contain the reconstructed content. Here is Alice in Wonderland – an awesome read !</p>
+<div id="attachment_444" style="width: 650px" class="wp-caption alignnone"><img class="size-full wp-image-444" src="./TCP packet drop analysis   Unleash Networks Blog_files/pl4.jpg" alt="Alice" width="640" height="467"><p class="wp-caption-text">Reconstructed content only if no holes : User Objects sheet</p></div>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		This entry was posted in <a href="http://www.unleashnetworks.com/blog/?cat=1" title="View all posts in Uncategorized" rel="category">Uncategorized</a> by <a href="http://www.unleashnetworks.com/blog/?author=2">Vivek Rajagopalan</a>. Bookmark the <a href="./TCP packet drop analysis   Unleash Networks Blog_files/TCP packet drop analysis   Unleash Networks Blog.htm" title="Permalink to TCP packet drop analysis" rel="bookmark">permalink</a>.		
+				<div id="author-info">
+			<div id="author-avatar">
+				<img alt="" src="./TCP packet drop analysis   Unleash Networks Blog_files/071a9acfe84fe79af9585cdedc847434" class="avatar avatar-68 photo" height="68" width="68">			</div><!-- #author-avatar -->
+			<div id="author-description">
+				<h2>About Vivek Rajagopalan</h2>
+				Vivek Rajagopalan is the lead developer behind the Unsniff Network Analyzer, Trisul,  and Unbrowse SNMP products.				<div id="author-link">
+					<a href="http://www.unleashnetworks.com/blog/?author=2" rel="author">
+						View all posts by Vivek Rajagopalan <span class="meta-nav">→</span>					</a>
+				</div><!-- #author-link	-->
+			</div><!-- #author-description -->
+		</div><!-- #author-info -->
+			</footer><!-- .entry-meta -->
+</article><!-- #post-437 -->
+
+						<div id="comments">
+	
+	
+			<p class="nocomments">Comments are closed.</p>
+	
+			
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+								<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+</body></html>
