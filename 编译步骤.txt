@@ -1,20 +1,20 @@
 
-¸Ã¹¤¾ßÒÀÀµ¿ªÔ´¿âlibpcapºÍlibnids£º
+è¯¥å·¥å…·ä¾èµ–å¼€æºåº“libpcapï¼ˆæœ¬å·¥ç¨‹ä¸­çš„æºç ç‰ˆæœ¬ä¸º1.8.1ï¼Œæœªåšä»»ä½•ä¿®æ”¹ï¼‰å’Œlibnidsï¼ˆæœ¬å·¥ç¨‹ä¸­çš„æºç åŸºäº1.24åšäº†ç›¸å…³ä¿®æ”¹ï¼‰ï¼š
 
-Õı³£Çé¿öÏÂ£¬ÈçÎŞÌØÊâĞèÒª£¬²»ĞèÖ´ĞĞµÚ1²½ºÍµÚ2²½¡£
+æ­£å¸¸æƒ…å†µä¸‹ï¼Œå¦‚æ— ç‰¹æ®Šéœ€è¦ï¼Œä¸éœ€æ‰§è¡Œç¬¬1æ­¥å’Œç¬¬2æ­¥ã€‚
 
-1. ´Óhttps://github.com/the-tcpdump-group/libpcap/tree/masterÏÂÔØlibpcapÔ´Âë, ±àÒëÉú³É¾²Ì¬¿âlibpcap.a£¬¿½µ½rtp_parser/libÄ¿Â¼¡£
-	a. Ö´ĞĞ./configure£¬ Èç¹ûÒÀÀµ¿â²»´æÔÚ£¬Çë¸ù¾İÌáÊ¾ÏÂÔØ°²×°¶ÔÓ¦µÄÒÀÀµ×é¼ş
-	b. Ö´ĞĞmake£¬Éú³Élibpcap.a
-	c. ½«libpcap.a¿½µ½rtp_parser/libÄ¿Â¼¡£
+1. è¿›å…¥ç›®å½•libpcap, ç¼–è¯‘ç”Ÿæˆé™æ€åº“libpcap.aï¼Œæ‹·åˆ°rtp_parser/libç›®å½•ã€‚
+	a. æ‰§è¡Œ./configureï¼Œ å¦‚æœä¾èµ–åº“ä¸å­˜åœ¨ï¼Œè¯·æ ¹æ®æç¤ºä¸‹è½½å®‰è£…å¯¹åº”çš„ä¾èµ–ç»„ä»¶
+	b. æ‰§è¡Œmakeï¼Œç”Ÿæˆlibpcap.a
+	c. å°†libpcap.aæ‹·åˆ°rtp_parser/libç›®å½•ã€‚
 
-2. ½øÈëÎÄ¼ş¼Ğlibnids-patch£¬±àÒëlibnids£¬¸Ã¿â¾­¹ı¼òµ¥µÄĞŞ¸Ä£¬ÎÄ¼ş¼Ğlibnids-patchÊÇ¸ögit¹¤³Ì£¬¿ÉÒÔ²é¿´Ïà¹ØĞŞ¸ÄÄÚÈİ£º
-	a. Ö´ĞĞÏÂÃæÃüÁîÉú³Émakefile:
-		./configure --with-libpcap= ../libpcap --enable-tcpreasm  --disable-libglib --disable-libnet
-		 --enable-tcpreasmÑ¡ÏîÊÇÔÊĞí¸ú×Ù²»ÍêÕûµÄtcpÁ¬½Ó£¬Ê¹ÄÜÁËÕâ¸öÑ¡Ïî£¬¼´Ê¹×¥°üÎÄ¼şÖĞÃ»ÓĞtcpÁ¬½ÓµÄÈı´ÎÎÕÊÖ¹ı³Ì£¬Ò²¸ú×ÙÕâÌõtcpÊı¾İÁ÷¡£
-	b. Ö´ĞĞmake£¬Éú³Élibnids.a.
-	c. ½«libnids.a¿½µ½rtp_parser/libÄ¿Â¼¡£
+2. è¿›å…¥æ–‡ä»¶å¤¹libnids-patchï¼Œç¼–è¯‘libnidsï¼Œè¯¥åº“ç»è¿‡ç®€å•çš„ä¿®æ”¹ï¼Œæ–‡ä»¶å¤¹libnids-patchæ˜¯ä¸ªgitå·¥ç¨‹ï¼Œå¯ä»¥æŸ¥çœ‹ç›¸å…³ä¿®æ”¹å†…å®¹ï¼š
+	a. æ‰§è¡Œä¸‹é¢å‘½ä»¤ç”Ÿæˆmakefile:
+		./configure --with-libpcap=../libpcap --enable-tcpreasm  --disable-libglib --disable-libnet
+		 --enable-tcpreasmé€‰é¡¹æ˜¯å…è®¸è·Ÿè¸ªä¸å®Œæ•´çš„tcpè¿æ¥ï¼Œä½¿èƒ½äº†è¿™ä¸ªé€‰é¡¹ï¼Œå³ä½¿æŠ“åŒ…æ–‡ä»¶ä¸­æ²¡æœ‰tcpè¿æ¥çš„ä¸‰æ¬¡æ¡æ‰‹è¿‡ç¨‹ï¼Œä¹Ÿè·Ÿè¸ªè¿™æ¡tcpæ•°æ®æµã€‚
+	b. æ‰§è¡Œmakeï¼Œç”Ÿæˆlibnids.a.
+	c. å°†libnids.aæ‹·åˆ°rtp_parser/libç›®å½•ã€‚
 	
-3. ½øÈëÎÄ¼ş¼Ğrtp_parser£¬±àÒë¿ÉÖ´ĞĞÎÄ¼şrtp_parser£º
-	a. Ö´ĞĞmake¼´¿ÉÔÚbinÄ¿Â¼ÏÂÉú³É¿ÉÖ´ĞĞÎÄ¼şrtp_parser¡£
-	b. ÔÚbinÄ¿Â¼ÏÂÖ´ĞĞ./rtp_parser rtsp.pcap(rtsp.pcapÎª×¥°üÎÄ¼ş)¼´¿ÉÉú³É½âÎöÎÄ¼ş
+3. è¿›å…¥æ–‡ä»¶å¤¹rtp_parserï¼Œç¼–è¯‘å¯æ‰§è¡Œæ–‡ä»¶rtp_parserï¼š
+	a. æ‰§è¡Œmakeå³å¯åœ¨binç›®å½•ä¸‹ç”Ÿæˆå¯æ‰§è¡Œæ–‡ä»¶rtp_parserã€‚
+	b. åœ¨binç›®å½•ä¸‹æ‰§è¡Œ./rtp_parser rtsp.pcap(rtsp.pcapä¸ºæŠ“åŒ…æ–‡ä»¶)å³å¯ç”Ÿæˆè§£ææ–‡ä»¶
