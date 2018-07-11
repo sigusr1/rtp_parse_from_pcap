@@ -152,13 +152,14 @@ void rtp_parser::search_frame(struct timeval *capture_time)
 				rtp_pkt_end_time = *capture_time;
 				if (!is_file_created)
 				{
+#ifndef DISABLE_DAV_FILE
 					dav_file = fopen(dav_file_name.c_str(), "wb");
 					if ( dav_file == NULL )
 					{
 						COMMON_LOG("create file[%s] failed!",dav_file_name.c_str());
 						exit(1);
 					}
-
+#endif
 					parse_file = fopen(parse_file_name.c_str(), "wb");
 					if ( parse_file == NULL )
 					{
@@ -180,7 +181,11 @@ void rtp_parser::search_frame(struct timeval *capture_time)
 				
 				write_frm_info();
 
+#ifndef DISABLE_DAV_FILE
 				buffer.write_to_file(dav_file, rpt_pkt_len + sizeof(rtsp_interleaved_frame_hdr));
+#else
+				buffer.drop_data(rpt_pkt_len + sizeof(rtsp_interleaved_frame_hdr));
+#endif
 
 				if (frm_end)
 				{

@@ -40,6 +40,8 @@ typedef struct
  * RTP data header
  */
 
+#define DISABLE_DAV_FILE
+
 typedef struct {
 #if defined(__BIG_ENDIAN_BITFIELD)
     unsigned int version:2;   /* protocol version */
